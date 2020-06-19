@@ -1,10 +1,13 @@
 import React from 'react';
-import SignInSide from "./singIn";
+import SignInSide from "./components/auth/singIn";
+import { Button } from '@material-ui/core';
 
 function App() {
   return (
-   <SignInSide/>
+    <>
+      <SignInSide />
+    </>
   );
 }
 
-export default App;//exportamos para poder utilizar en react
+export default App; //exportamos para poder utilizar en react
