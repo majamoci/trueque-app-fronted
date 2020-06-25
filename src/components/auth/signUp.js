@@ -49,7 +49,7 @@ export default function SignUp() {
           <LockIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+        Crear cuenta
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -71,7 +71,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label="Apellido"
                 name="lastName"
                 autoComplete="lname"
               />
@@ -82,7 +82,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Correo electrónico"
                 name="email"
                 autoComplete="email"
               />
@@ -93,18 +93,18 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
-            </Grid>
+            </Grid> */}
           </Grid>
           <Button
             type="submit"
@@ -113,7 +113,7 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Registrarse
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

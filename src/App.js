@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import SignIn from "./components/auth/singIn";
 import SignUp from './components/auth/signUp';
+import RecoverPassword from './components/auth/recoverPassword';
+
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
           <Route path="/register">
             <SignUp />
           </Route>
+
+          <Route path="/recoverpassword">
+            <RecoverPassword />
+          </Route>
+
         </Switch>
       </div>
     </Router>
