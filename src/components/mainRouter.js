@@ -1,9 +1,10 @@
 import React from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import SignUp from "./auth/signUp";
-import Dashboard from "./dashboard/dashboard";
+import Template from "./dashboard/Template";
 import SignIn from "./auth/singIn";
 import RecoverPassword from "./auth/recoverPassword";
+import { AuthRoute, LoginRequiredRoute } from "./shared/authenticated";
 
 export default function MainRouter() {
   return (
@@ -14,48 +15,8 @@ export default function MainRouter() {
       </Route>
       <AuthRoute path="/login" component={SignIn} />
       <AuthRoute path="/register" component={SignUp} />
-      <LoginRequiredRoute component={Dashboard} />
       <Route path="/recoverpassword" component={RecoverPassword} />
+      <LoginRequiredRoute path="*" component={Template} />
     </Switch>
   );
 }
-
-const LoginRequiredRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      "ACCESS_TOKEN" in sessionStorage ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: {
-              from: props.location,
-            },
-          }}
-        />
-      )
-    }
-  />
-);
-
-const AuthRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      "ACCESS_TOKEN" in sessionStorage ? (
-        <Redirect
-          to={{
-            pathname: "/dashboard",
-            state: {
-              from: props.location,
-            },
-          }}
-        />
-      ) : (
-        <Component {...props} />
-      )
-    }
-  />
-);

@@ -58,6 +58,7 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const loginStore = useSelector((state) => state.login);
+  const roleStore = useSelector((state) => state.user);
 
   // funciones para capturar los datos email, password
   const handleEmail = (e) => {
@@ -76,24 +77,23 @@ export default function SignIn() {
   useEffect(() => {
     // verificamos si el objeto tokens esta completo
     if (loginStore && loginStore.tokens.status_code === 200) {
-      // Enviamos el email para recibir el token
-      dispatch(fetchRole(email, loginStore.tokens.access_token));
+      let access_token = loginStore.tokens.access_token;
+      // guardamos el estado del rol
+      dispatch(fetchRole(email, access_token));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginStore]);
 
-      // guardamos en localStorage token + roles
-      sessionStorage.setItem('ACCESS_TOKEN', loginStore.tokens.access_token);
-
-      // localizacion por redireccion o /dashboard por defecto
+  useEffect(() => {
+    if (roleStore && roleStore.roles.status_code === 200) {
       let { from } = location.state || {
         from: {
           pathname: "/dashboard",
         },
       };
-
-      // // enviamos a la siguiente ruta
       history.replace(from);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loginStore]);
+  });
 
   return (
     <Grid container component="main" className={classes.root}>

@@ -35,6 +35,12 @@ const fetchRole = (data, token) => {
     })
       .then((response) => {
         const result = response.data;
+
+        // guardamos en sessionStorage roles
+        let _roles = [];
+        result.names.map((role) => _roles.push(role.name));
+        sessionStorage.setItem("ROLES", JSON.stringify(_roles));
+
         dispatch(fetchRoleSuccess(result));
       })
       .catch((error) => {
