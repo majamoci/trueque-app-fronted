@@ -24,6 +24,6 @@ serviceWorker.register({
   },
   onSuccess: (registration) => {
     console.info("service worker on success state");
-    console.log(registration);
+    // console.log(registration);
   },
 });
