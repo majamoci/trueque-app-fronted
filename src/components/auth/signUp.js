@@ -1,11 +1,9 @@
-import React from "react";
-import {Link as LinkRouter} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link as LinkRouter, useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockIcon from "@material-ui/icons/Lock";
@@ -13,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Copyright from "../shared/copyright";
+import { useDispatch, useSelector } from "react-redux";
+import fetchRegister from "../../redux/actions/register.action";
+import fetchRole from "../../redux/actions/role.action";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,12 +35,68 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: theme.palette.primary.main,
-    textDecoration: "none"
-  }
+    textDecoration: "none",
+  },
 }));
 
 export default function SignUp() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const registerSt = useSelector((store) => store.register);
+  const roleSt = useSelector((store) => store.user);
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [nameError, setNameError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
+
+  const handleFName = (e) => setFName(e.target.value);
+  const handleLName = (e) => setLName(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(fetchRegister({ name: `${fName} ${lName}`, email, password }));
+  };
+
+  useEffect(() => {
+    // verificamos si el objeto tokens esta completo
+    if (registerSt && registerSt.tokens.status_code === 200) {
+      let { access_token } = registerSt.tokens;
+      // guardamos el estado del rol
+      dispatch(fetchRole(email, access_token));
+    } else {
+      if (registerSt.errors.errors) {
+        const errors = Object.keys(registerSt.errors.errors);
+
+        if (errors.includes("name")) {
+          setNameError(registerSt.errors.errors.name);
+        }
+
+        if (errors.includes("email")) {
+          setEmailError(registerSt.errors.errors.email);
+        }
+
+        if (errors.includes("password")) {
+          setPasswordError(registerSt.errors.errors.password);
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [registerSt]);
+
+  useEffect(() => {
+    if (roleSt && roleSt.roles.status_code === 200) {
+      history.replace({
+        pathname: "/dashboard",
+      });
+    }
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -49,62 +106,65 @@ export default function SignUp() {
           <LockIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-        Crear cuenta
+          Crear cuenta
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
+                error={Boolean(nameError)}
+                helperText={nameError ? nameError : ""}
+                autoFocus
                 required
                 fullWidth
-                id="firstName"
+                name="firstName"
+                variant="outlined"
                 label="Nombres"
-                autoFocus
+                autoComplete="fname"
+                onChange={handleFName}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                error={Boolean(nameError)}
+                helperText={nameError ? nameError : ""}
                 required
                 fullWidth
-                id="lastName"
-                label="Apellido"
+                variant="outlined"
+                label="Apellidos"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleLName}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                error={Boolean(emailError)}
+                helperText={emailError ? emailError : ""}
                 required
                 fullWidth
-                id="email"
-                label="Correo electrónico"
+                variant="outlined"
+                type="email"
                 name="email"
+                label="Correo electrónico"
                 autoComplete="email"
+                onChange={handleEmail}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                error={Boolean(passwordError)}
+                helperText={passwordError ? passwordError : ""}
                 required
                 fullWidth
+                variant="outlined"
+                type="password"
                 name="password"
                 label="Contraseña"
-                type="password"
-                id="password"
                 autoComplete="current-password"
+                onChange={handlePassword}
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button
             type="submit"
