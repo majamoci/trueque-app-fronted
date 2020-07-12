@@ -4,6 +4,7 @@ import SignUp from "./auth/signUp";
 import Template from "./dashboard/Template";
 import SignIn from "./auth/singIn";
 import RecoverPassword from "./auth/recoverPassword";
+import NewPassword from "./auth/newPassword"
 import { AuthRoute, LoginRequiredRoute } from "./shared/authenticated";
 
 export default function MainRouter() {
@@ -16,6 +17,18 @@ export default function MainRouter() {
       <AuthRoute path="/login" component={SignIn} />
       <AuthRoute path="/register" component={SignUp} />
       <Route path="/recoverpassword" component={RecoverPassword} />
+      <Route path="/formularioRecuperarContrasena" > 
+        
+        <h2 style={{textAlign: 'center'}} >Verifica tu email <br></br>
+            Hemos enviado una nueva contraseña a <br></br>
+            mrcaiza1@espe.edu.ec
+        </h2>
+                
+        <Route path="/formularioRecuperarContrasena" component={NewPassword} />
+        
+      </Route>
+
+
       <LoginRequiredRoute path="*" component={Template} />
     </Switch>
   );

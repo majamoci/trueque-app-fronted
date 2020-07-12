@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+//import React from "react";
 import {Link as LinkRouter} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -13,6 +14,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Copyright from "../shared/copyright";
+import { useDispatch, useSelector } from "react-redux";
+import fetchLogin from "../../redux/actions/signup.action";
+import fetchRole from "../../redux/actions/role.action";
+import store from "../../redux/store";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,7 +44,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-  const classes = useStyles();
+  const classes = useStyles();//esta ya estaba
+
+  //
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState(false);
+  const [password, setPassword] = useState("");
+  const loginStore = useSelector((state) => state.register);
+
+
+
+  // funciones para capturar los datos email, password
+  const handleEmail = (e) => {
+    setEmail(e.target.value);//esta al pendiente de los cambios del input imail
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);//esta al pendiente de los cambios del input password
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    //setEmail(e.target.value);
+    dispatch(fetchLogin({ email, password }));
+  };
+
+
+//
+useEffect(() => {
+  // verificamos si el objeto tokens esta completo
+  if (loginStore && loginStore.tokens.status_code === 200) {
+    let access_token = loginStore.tokens.access_token;
+    // guardamos el estado del rol
+    setEmail(true);
+    dispatch(fetchRole(email, access_token));
+
+    setEmail(true);
+
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+}, [loginStore]);
+//
+
+console.log(store.getState());
 
   return (
     <Container component="main" maxWidth="xs">
@@ -51,10 +99,11 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
         Crear cuenta
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleForm}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -78,6 +127,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+               onChange={handleEmail}
                 variant="outlined"
                 required
                 fullWidth
@@ -85,10 +135,16 @@ export default function SignUp() {
                 label="Correo electrónico"
                 name="email"
                 autoComplete="email"
+                error={email}
+               // helperText="Incorrect email."   // hay que poner alguna funcion aqui creo 
+                //helperText={handleEmail}
+
+                helperText={setEmail}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={handlePassword}
                 variant="outlined"
                 required
                 fullWidth

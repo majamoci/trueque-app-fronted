@@ -63,6 +63,7 @@ export default function SignIn() {
   // funciones para capturar los datos email, password
   const handleEmail = (e) => {
     setEmail(e.target.value);
+    
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
