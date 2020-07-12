@@ -1,17 +1,26 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Avatar, Menu, MenuItem } from "@material-ui/core";
 
 export default function AccountMenu() {
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenu = (e) => {
+    setAnchorEl(e.currentTarget);
   };
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const closeSession = () => {
+    sessionStorage.removeItem("ROLES");
+    sessionStorage.removeItem("ACCESS_TOKEN");
+
+    history.replace({ pathname: "/" });
+  }
 
   return (
     <>
@@ -37,7 +46,7 @@ export default function AccountMenu() {
       >
         <MenuItem onClick={handleClose}>Perfil</MenuItem>
         <MenuItem onClick={handleClose}>Mis Publicaciones</MenuItem>
-        <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+        <MenuItem onClick={closeSession}>Cerrar Sesión</MenuItem>
       </Menu>
     </>
   );
