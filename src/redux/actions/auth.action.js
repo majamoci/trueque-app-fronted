@@ -24,17 +24,30 @@ export const fetchAuthFailure = (error) => {
   };
 };
 
-// la data es { email, password }
+// la data es { email, password, remember }
 const fetchLogin = (data) => {
+  const { remember, ...formData } = data;
   return (dispatch) => {
     dispatch(fetchAuthRequest);
-    Axios.post(`${process.env.REACT_APP_API_URI}/api/login`, data)
+    Axios.post(`${process.env.REACT_APP_API_URI}/api/login`, formData)
       .then((response) => {
-        const result = response.data;
+        const { access_token, roles } = response.data;
+        let _roles = [];
+        roles.map((role) => (_roles = [..._roles, role.name.charAt(0)]));
 
-        // guardamos en localStorage token
-        sessionStorage.setItem("ACCESS_TOKEN", result.access_token);
-        dispatch(fetchAuthSuccess(result));
+        // remember = true
+        if (remember) {
+          localStorage.setItem("ACCESS_TOKEN", access_token);
+          localStorage.setItem("AUTH", `${access_token},${_roles}`);
+          localStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
+        } else {
+          // guardamos en localStorage token
+          sessionStorage.setItem("ACCESS_TOKEN", access_token);
+          sessionStorage.setItem("AUTH", `${access_token},${_roles}`);
+          sessionStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
+        }
+        dispatch(fetchAuthSuccess(response.data));
+        _roles = [];
       })
       .catch((error) => {
         if (error.response) dispatch(fetchAuthFailure(error.response.data));

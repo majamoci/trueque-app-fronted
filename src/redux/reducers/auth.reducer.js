@@ -6,7 +6,7 @@ const {
 
 const initial_state = {
   loading: false,
-  tokens: {},
+  data: {},
   errors: {},
 };
 
@@ -21,14 +21,14 @@ function login(state = initial_state, action) {
     case FETCH_AUTH_SUCCESS: {
       return {
         loading: false,
-        tokens: action.payload,
+        data: action.payload,
         errors: {},
       };
     }
     case FETCH_AUTH_FAILURE: {
       return {
         loading: false,
-        tokens: {},
+        data: {},
         errors: action.payload,
       };
     }

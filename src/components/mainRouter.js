@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import SignUp from "./auth/signUp";
 import Template from "./dashboard/Template";
-import SignIn from "./auth/singIn";
-import RecoverPassword from "./auth/recoverPassword";
-import { AuthRoute, LoginRequiredRoute } from "./shared/authenticated";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import ResetPassword from "./auth/resetPassword";
+import { LoginRequiredRoute } from "./shared/authenticated";
 
 export default function MainRouter() {
   return (
@@ -13,9 +13,9 @@ export default function MainRouter() {
         <h2>Hola, esta es la pagina principal</h2>
         <Link to="/login">Ingresar</Link>
       </Route>
-      <AuthRoute path="/login" component={SignIn} />
-      <AuthRoute path="/register" component={SignUp} />
-      <Route path="/recoverpassword" component={RecoverPassword} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/reset-password" component={ResetPassword} />
       <LoginRequiredRoute path="*" component={Template} />
     </Switch>
   );

@@ -6,7 +6,7 @@ const {
 
 const initial_state = {
   loading: false,
-  tokens: {},
+  data: {},
   errors: {},
 };
 
@@ -21,14 +21,14 @@ function register(state = initial_state, action) {
     case FETCH_REGISTER_SUCCESS: {
       return {
         loading: false,
-        tokens: action.payload,
+        data: action.payload,
         errors: {},
       };
     }
     case FETCH_REGISTER_FAILURE: {
       return {
         loading: false,
-        tokens: {},
+        data: {},
         errors: action.payload,
       };
     }

@@ -29,12 +29,14 @@ const fetchRegister = (data) => {
   return (dispatch) => {
     dispatch(fetchRegisterRequest);
     Axios.post(`${process.env.REACT_APP_API_URI}/api/register`, data)
-      .then((response) => {
-        const result = response.data;
+    .then((response) => {
+        const { access_token, roles } = response.data;
 
-        // guardamos en localStorage token
-        sessionStorage.setItem("ACCESS_TOKEN", result.access_token);
-        dispatch(fetchRegisterSuccess(result));
+        // guardamos en sessionStorage token
+        sessionStorage.setItem("ACCESS_TOKEN", access_token);
+        sessionStorage.setItem("AUTH", `${access_token},${roles.charAt(0)}`);
+        sessionStorage.setItem("ROLES", JSON.stringify([roles]));
+        dispatch(fetchRegisterSuccess(response.data));
       })
       .catch((error) => {
         if (error.response) dispatch(fetchRegisterFailure(error.response.data));

@@ -19,6 +19,8 @@ export default function AccountMenu() {
     sessionStorage.removeItem("ROLES");
     sessionStorage.removeItem("ACCESS_TOKEN");
 
+    // regresar al state inicial
+
     history.replace({ pathname: "/" });
   }
 
