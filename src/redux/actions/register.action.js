@@ -28,7 +28,7 @@ export const fetchRegisterFailure = (error) => {
 const fetchRegister = (data) => {
   return (dispatch) => {
     dispatch(fetchRegisterRequest);
-    Axios.post(`${process.env.REACT_APP_API_URI}/api/register`, data)
+    Axios.post(`${process.env.REACT_APP_API_URI}api/register`, data)
     .then((response) => {
         const { access_token, roles } = response.data;
 

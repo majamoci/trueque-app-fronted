@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Link as LinkRouter } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -12,7 +13,8 @@ import Container from "@material-ui/core/Container";
 import Copyright from "../../shared/copyright";
 import { useSelector } from "react-redux";
 import { useStyles } from "../styles";
-import { withForm } from "../hoc/withForm";
+import { withForm } from "../../shared/hoc/withForm";
+import { isEmpty } from "../../shared/utils";
 
 function SignUp({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
@@ -23,7 +25,7 @@ function SignUp({ _handleChange, _handleSubmit }) {
 
   useEffect(() => {
     const response = registerSt.errors;
-    if (response.length !== 0) {
+    if (!isEmpty(response)) {
       const errors = response.errors;
       setNameError(errors && errors.username ? errors.username : null);
       setEmailError(errors && errors.email ? errors.email : null);
@@ -110,5 +112,10 @@ function SignUp({ _handleChange, _handleSubmit }) {
     </Container>
   );
 }
+
+SignUp.propTypes = {
+  _handleChange: PropTypes.func.isRequired,
+  _handleSubmit: PropTypes.func.isRequired,
+};
 
 export default withForm(SignUp);

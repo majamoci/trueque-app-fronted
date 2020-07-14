@@ -5,8 +5,7 @@ import { Redirect } from "react-router-dom";
 import fetchRegister from "../../redux/actions/register.action";
 
 const initialForm = {
-  firstName: "",
-  lastName: "",
+  username: "",
   email: "",
   password: "",
 };

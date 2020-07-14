@@ -35,4 +35,10 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     textDecoration: "none",
   },
+  errMsg: {
+    color: theme.palette.error.main,
+  },
+  okMsg: {
+    color: theme.palette.success.main,
+  }
 }));

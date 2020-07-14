@@ -29,7 +29,7 @@ const fetchLogin = (data) => {
   const { remember, ...formData } = data;
   return (dispatch) => {
     dispatch(fetchAuthRequest);
-    Axios.post(`${process.env.REACT_APP_API_URI}/api/login`, formData)
+    Axios.post(`${process.env.REACT_APP_API_URI}api/login`, formData)
       .then((response) => {
         const { access_token, roles } = response.data;
         let _roles = [];
@@ -40,14 +40,13 @@ const fetchLogin = (data) => {
           localStorage.setItem("ACCESS_TOKEN", access_token);
           localStorage.setItem("AUTH", `${access_token},${_roles}`);
           localStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
+          // FIXME: aqui esta el error
         } else {
-          // guardamos en localStorage token
           sessionStorage.setItem("ACCESS_TOKEN", access_token);
           sessionStorage.setItem("AUTH", `${access_token},${_roles}`);
           sessionStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
         }
         dispatch(fetchAuthSuccess(response.data));
-        _roles = [];
       })
       .catch((error) => {
         if (error.response) dispatch(fetchAuthFailure(error.response.data));

@@ -3,7 +3,8 @@ import { Switch, Route, Link } from "react-router-dom";
 import Template from "./dashboard/Template";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import ResetPassword from "./auth/resetPassword";
+import ResetPw from "./auth/ResetPw";
+import ChangePw from "./auth/ChangePw";
 import { LoginRequiredRoute } from "./shared/authenticated";
 
 export default function MainRouter() {
@@ -15,7 +16,8 @@ export default function MainRouter() {
       </Route>
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
-      <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/reset-password" component={ResetPw} />
+      <Route path="/change-password" component={ChangePw} />
       <LoginRequiredRoute path="*" component={Template} />
     </Switch>
   );

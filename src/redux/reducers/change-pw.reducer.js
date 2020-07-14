@@ -1,34 +1,34 @@
 import {
-  FETCH_ROLE_REQUEST,
-  FETCH_ROLE_SUCCESS,
-  FETCH_ROLE_FAILURE,
-} from "../actions/role.action";
+  FETCH_CHANGE_PW_REQUEST,
+  FETCH_CHANGE_PW_SUCCESS,
+  FETCH_CHANGE_PW_FAILURE,
+} from "../actions/change-pw.action";
 
 const init_state = {
   loading: false,
-  roles: {},
+  data: {},
   errors: {}
 }
 
-function role(state = init_state, action) {
+function change(state = init_state, action) {
   switch (action.type) {
-    case FETCH_ROLE_REQUEST: {
+    case FETCH_CHANGE_PW_REQUEST: {
       return {
         ...state,
         loading: true,
       }
     }
-    case FETCH_ROLE_SUCCESS: {
+    case FETCH_CHANGE_PW_SUCCESS: {
       return {
         loading: false,
-        roles: action.payload,
+        data: action.payload,
         errors: {}
       }
     }
-    case FETCH_ROLE_FAILURE: {
+    case FETCH_CHANGE_PW_FAILURE: {
       return {
         loading: false,
-        roles: {},
+        data: {},
         errors: action.payload
       }
     }
@@ -38,4 +38,4 @@ function role(state = init_state, action) {
   }
 }
 
-export default role;
+export default change;

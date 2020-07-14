@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Paper from "@material-ui/core/Paper";
+import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Copyright from "../../shared/copyright";
 import { useStyles } from "../styles";
-import { withForm } from "../hoc/withForm";
+import { withForm } from "../../shared/hoc/withForm";
 import { useSelector } from "react-redux";
+import { isEmpty } from "../../shared/utils";
 
 function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
   const classes = useStyles();
@@ -23,7 +25,7 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
 
   useEffect(() => {
     const response = loginSt.errors;
-    if (response.length !== 0) {
+    if (!isEmpty(response)) {
       const errors = response.errors;
       setEmailError(errors && errors.email ? errors.email : null);
       setPasswordError(errors && errors.password ? errors.password : null);
@@ -104,5 +106,11 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
     </Grid>
   );
 }
+
+SignIn.propTypes = {
+  _handleChange: PropTypes.func.isRequired,
+  _handleSubmit: PropTypes.func.isRequired,
+  _handleRemember: PropTypes.func.isRequired,
+};
 
 export default withForm(SignIn);
