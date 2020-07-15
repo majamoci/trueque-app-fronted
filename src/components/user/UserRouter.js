@@ -1,16 +1,18 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import UDashboard from "./Dashboard";
+import TemplateAdmin from "../dashboard/TemplateAdmin";
+import UserMenu from "./Actions";
 
-export default function UserRouter() {
+export default function AdminRouter() {
+  const { path } = useRouteMatch();
   return (
-    <Switch>
-      <Route exact path="/dashboard">
-        <UDashboard />
-      </Route>
-      {/* <Route path="/dashboard">
-        <h2>Users</h2>
-      </Route> */}
-    </Switch>
+    <TemplateAdmin drawer={UserMenu}>
+      <Switch>
+        <Route exact path={`${path}/dashboard`}>
+          <UDashboard />
+        </Route>
+      </Switch>
+    </TemplateAdmin>
   );
 }

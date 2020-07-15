@@ -17,3 +17,16 @@ export const isEmpty = (el) => {
       break;
   }
 }
+
+export const role = () => {
+  const local = "AUTH" in localStorage;
+  const session = "AUTH" in sessionStorage;
+  if (local || session) {
+    const auth = local
+      ? localStorage.getItem("AUTH")
+      : sessionStorage.getItem("AUTH");
+    const role = auth.charAt(auth.length - 1);
+
+    return role;
+  }
+};

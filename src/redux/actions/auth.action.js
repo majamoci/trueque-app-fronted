@@ -10,10 +10,10 @@ export const fetchAuthRequest = () => {
   };
 };
 
-export const fetchAuthSuccess = (tokens) => {
+export const fetchAuthSuccess = (data) => {
   return {
     type: FETCH_AUTH_SUCCESS,
-    payload: tokens,
+    payload: data,
   };
 };
 
@@ -37,14 +37,9 @@ const fetchLogin = (data) => {
 
         // remember = true
         if (remember) {
-          localStorage.setItem("ACCESS_TOKEN", access_token);
           localStorage.setItem("AUTH", `${access_token},${_roles}`);
-          localStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
-          // FIXME: aqui esta el error
         } else {
-          sessionStorage.setItem("ACCESS_TOKEN", access_token);
           sessionStorage.setItem("AUTH", `${access_token},${_roles}`);
-          sessionStorage.setItem("ROLES", JSON.stringify(["ADMIN"]));
         }
         dispatch(fetchAuthSuccess(response.data));
       })

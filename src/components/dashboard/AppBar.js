@@ -6,45 +6,16 @@ import {
   IconButton,
   Typography,
   Badge,
-  makeStyles,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccountMenu from "./AccountMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { openDrawer } from "../../redux/actions/drawer.action";
-
-const drawerWidth = 240;
-
-const useStyle = makeStyles((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: "none",
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import { useStyles } from "./styles";
 
 export default function DashboardBar() {
-  const classes = useStyle();
+  const classes = useStyles();
   const dispatch = useDispatch();
   const drawerStore = useSelector((state) => state.drawer);
 

@@ -1,9 +1,9 @@
 import React from "react";
-
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import DrawerTemplate from "../dashboard/Drawer";
 
-export const AdminMenu = [
+const menu = [
   {
     icon: <DashboardIcon />,
     text: "Dashboard",
@@ -15,3 +15,7 @@ export const AdminMenu = [
     link: "/users",
   },
 ];
+
+export default function AdminMenu() {
+  return <DrawerTemplate list={menu} />;
+}

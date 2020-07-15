@@ -16,8 +16,10 @@ export default function AccountMenu() {
   };
 
   const closeSession = () => {
-    sessionStorage.removeItem("ROLES");
-    sessionStorage.removeItem("ACCESS_TOKEN");
+    const local = "AUTH" in localStorage;
+    const session = "AUTH" in sessionStorage;
+    if (local) localStorage.removeItem('AUTH');
+    if (session) sessionStorage.removeItem('AUTH');
 
     // regresar al state inicial
 

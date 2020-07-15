@@ -1,54 +1,43 @@
 import React from "react";
 import clsx from "clsx";
-import { Drawer, makeStyles, IconButton, Divider } from "@material-ui/core";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import List from "@material-ui/core/List";
+import Drawer from "@material-ui/core/Drawer";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import IconButton from "@material-ui/core/IconButton";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { closeDrawer } from "../../redux/actions/drawer.action";
-import { areRoles, getAdminRole, getUserRole } from "../shared/authenticated";
-import MenuList from "../shared/ListItems";
-import { AdminMenu } from "../admin/Actions";
-import { UserMenu } from "../user/Actions";
+import { useStyles } from "../dashboard/styles";
 
-const drawerWidth = 240;
+const Links = ({ items }) => {
+  const history = useHistory();
+  const { path } = useRouteMatch();
 
-const useStyles = makeStyles((theme) => ({
-  drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
-  },
-  toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
-    ...theme.mixins.toolbar,
-  },
-}));
+  const handleClick = (route) => {
+    history.replace({
+      pathname: `${path}${route}`,
+    });
+  };
 
-const ListLinks = () => {
-  if (areRoles() && getAdminRole() === "ADMIN")
-    return <MenuList list={AdminMenu} />;
-  else if (areRoles() && getUserRole() === "USER")
-    return <MenuList list={UserMenu} />;
+  return (
+    <List>
+      {items.map((item) => (
+        <React.Fragment key={item.text}>
+          <ListItem button onClick={() => handleClick(item.link)}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        </React.Fragment>
+      ))}
+    </List>
+  );
 };
 
-export default function DrawerTemplate() {
+export default function DrawerTemplate({ list }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const drawerStore = useSelector((state) => state.drawer);
@@ -60,13 +49,13 @@ export default function DrawerTemplate() {
   return (
     <Drawer
       variant="permanent"
+      open={drawerStore.open}
       classes={{
         paper: clsx(
           classes.drawerPaper,
           !drawerStore.open && classes.drawerPaperClose
         ),
       }}
-      open={drawerStore.open}
     >
       <div className={classes.toolbarIcon}>
         <IconButton onClick={handleDrawerClose}>
@@ -74,7 +63,7 @@ export default function DrawerTemplate() {
         </IconButton>
       </div>
       <Divider />
-      <ListLinks />
+      <Links items={list} />
       <Divider />
     </Drawer>
   );

@@ -24,7 +24,7 @@ export default function Login() {
     "AUTH" in sessionStorage;
 
   return auth ? (
-    <Redirect to="/dashboard" />
+    <Redirect to="/admin/dashboard" />
   ) : (
     <SignIn handleSubmit={handleSubmit} values={initialForm} />
   );
