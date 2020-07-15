@@ -3,6 +3,7 @@ import ResetPassword from "./forms/resetPasswordForm";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import fetchReset from "../../redux/actions/send-pw.action";
+import Auth from "../shared/utils";
 
 const initialForm = {
   email: "",
@@ -10,6 +11,7 @@ const initialForm = {
 
 export default function ResetPw() {
   let dispatch = useDispatch();
+  const _auth = new Auth();
   const resetSt = useSelector((state) => state.reset);
 
   const handleSubmit = (formData) => {
@@ -17,12 +19,10 @@ export default function ResetPw() {
   };
 
   const auth =
-    (resetSt && resetSt.data.status_code === 200) ||
-    "AUTH" in localStorage ||
-    "AUTH" in sessionStorage;
+    (resetSt && resetSt.data.status_code === 200) || _auth;
 
   return auth ? (
-    <Redirect to="/dashboard" />
+    <Redirect to="/admin" />
   ) : (
     <ResetPassword handleSubmit={handleSubmit} values={initialForm} />
   );

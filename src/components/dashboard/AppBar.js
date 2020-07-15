@@ -1,23 +1,21 @@
 import React from "react";
 import clsx from "clsx";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Badge,
-} from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import AccountMenu from "./AccountMenu";
-import { useSelector, useDispatch } from "react-redux";
 import { openDrawer } from "../../redux/actions/drawer.action";
+import AccountMenu from "./AccountMenu";
 import { useStyles } from "./styles";
 
 export default function DashboardBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const drawerStore = useSelector((state) => state.drawer);
+  const drawerSt = useSelector((state) => state.drawer);
 
   const handleDrawerOpen = () => {
     dispatch(openDrawer(true));
@@ -26,7 +24,7 @@ export default function DashboardBar() {
   return (
     <AppBar
       position="absolute"
-      className={clsx(classes.appBar, drawerStore.open && classes.appBarShift)}
+      className={clsx(classes.appBar, drawerSt.open && classes.appBarShift)}
     >
       <Toolbar className={classes.toolbar}>
         <IconButton
@@ -36,7 +34,7 @@ export default function DashboardBar() {
           onClick={handleDrawerOpen}
           className={clsx(
             classes.menuButton,
-            drawerStore.open && classes.menuButtonHidden
+            drawerSt.open && classes.menuButtonHidden
           )}
         >
           <MenuIcon />

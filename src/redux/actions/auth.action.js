@@ -3,6 +3,7 @@ import Axios from "axios";
 export const FETCH_AUTH_REQUEST = "FETCH_AUTH_REQUEST";
 export const FETCH_AUTH_SUCCESS = "FETCH_AUTH_SUCCESS";
 export const FETCH_AUTH_FAILURE = "FETCH_AUTH_FAILURE";
+export const FETCH_AUTH_RESET = "FETCH_AUTH_RESET";
 
 export const fetchAuthRequest = () => {
   return {
@@ -21,6 +22,12 @@ export const fetchAuthFailure = (error) => {
   return {
     type: FETCH_AUTH_FAILURE,
     payload: error,
+  };
+};
+
+export const fetchAuthReset = () => {
+  return {
+    type: FETCH_AUTH_RESET,
   };
 };
 

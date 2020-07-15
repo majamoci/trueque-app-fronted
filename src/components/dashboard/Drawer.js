@@ -1,7 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import List from "@material-ui/core/List";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -67,4 +68,8 @@ export default function DrawerTemplate({ list }) {
       <Divider />
     </Drawer>
   );
+}
+
+DrawerTemplate.propTypes = {
+  list: PropTypes.array.isRequired,
 }

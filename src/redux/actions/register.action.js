@@ -3,6 +3,7 @@ import Axios from "axios";
 export const FETCH_REGISTER_REQUEST = "FETCH_REGISTER_REQUEST";
 export const FETCH_REGISTER_SUCCESS = "FETCH_REGISTER_SUCCESS";
 export const FETCH_REGISTER_FAILURE = "FETCH_REGISTER_FAILURE";
+export const FETCH_REGISTER_RESET = "FETCH_REGISTER_RESET";
 
 export const fetchRegisterRequest = () => {
   return {
@@ -21,6 +22,12 @@ export const fetchRegisterFailure = (error) => {
   return {
     type: FETCH_REGISTER_FAILURE,
     payload: error,
+  };
+};
+
+export const fetchRegisterReset = () => {
+  return {
+    type: FETCH_REGISTER_RESET,
   };
 };
 

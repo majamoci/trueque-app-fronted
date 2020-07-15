@@ -2,6 +2,7 @@ const {
   FETCH_AUTH_REQUEST,
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_FAILURE,
+  FETCH_AUTH_RESET,
 } = require("../actions/auth.action");
 
 const initial_state = {
@@ -31,6 +32,9 @@ function login(state = initial_state, action) {
         data: {},
         errors: action.payload,
       };
+    }
+    case FETCH_AUTH_RESET: {
+      return initial_state;
     }
     default:
       return state;

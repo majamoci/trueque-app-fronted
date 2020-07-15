@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Avatar, Menu, MenuItem } from "@material-ui/core";
+import { fetchAuthReset } from "../../redux/actions/auth.action";
+import { fetchRegisterReset } from "../../redux/actions/register.action";
+import Auth from "../shared/utils";
 
 export default function AccountMenu() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
 
   const handleMenu = (e) => {
     setAnchorEl(e.currentTarget);
@@ -16,15 +20,15 @@ export default function AccountMenu() {
   };
 
   const closeSession = () => {
-    const local = "AUTH" in localStorage;
-    const session = "AUTH" in sessionStorage;
-    if (local) localStorage.removeItem('AUTH');
-    if (session) sessionStorage.removeItem('AUTH');
+    const auth = new Auth();
+    auth.logout();
 
     // regresar al state inicial
+    dispatch(fetchAuthReset());
+    dispatch(fetchRegisterReset());
 
     history.replace({ pathname: "/" });
-  }
+  };
 
   return (
     <>
@@ -45,7 +49,7 @@ export default function AccountMenu() {
           vertical: "top",
           horizontal: "right",
         }}
-        open={open}
+        open={Boolean(anchorEl)}
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose}>Perfil</MenuItem>

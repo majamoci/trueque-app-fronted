@@ -2,6 +2,7 @@ const {
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
   FETCH_REGISTER_FAILURE,
+  FETCH_REGISTER_RESET,
 } = require("../actions/register.action");
 
 const initial_state = {
@@ -31,6 +32,9 @@ function register(state = initial_state, action) {
         data: {},
         errors: action.payload,
       };
+    }
+    case FETCH_REGISTER_RESET: {
+      return initial_state;
     }
     default:
       return state;

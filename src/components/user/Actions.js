@@ -6,7 +6,7 @@ const menu = [
   {
     icon: <DashboardIcon />,
     text: "Dashboard",
-    link: "/dashboard",
+    link: "/",
   },
 ];
 

@@ -1,24 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import ResetPw from "./auth/ResetPw";
-import ChangePw from "./auth/ChangePw";
+import { NotFound } from "./shared/ViewError";
 import AdminRouter from "./admin/AdminRouter";
 import UserRouter from "./user/UserRouter";
-import { role } from "./shared/utils";
+import Register from "./auth/Register";
+import ChangePw from "./auth/ChangePw";
+import ResetPw from "./auth/ResetPw";
+import Auth from "./shared/utils";
+import Login from "./auth/Login";
 
-const LoginRequiredRoute = ({ component: Component, ...rest }) => (
+const LoginRequiredRoute = ({ ...rest }) => (
   <Route
-    {...rest}
-    render={(props) => {
-      switch (role()) {
-        case "U":
+  {...rest}
+  render={(props) => {
+      const auth = new Auth();
+      switch (auth.role()) {
+        case "U": {
+          return <UserRouter />;
+        }
         case "A": {
-          return <Component {...props} />;
+          return <AdminRouter />;
         }
         default: {
-          // no logueado
           return (
             <Redirect
               to={{
@@ -46,8 +50,12 @@ export default function MainRouter() {
       <Route path="/register" component={Register} />
       <Route path="/reset-password" component={ResetPw} />
       <Route path="/change-password" component={ChangePw} />
-      <LoginRequiredRoute path="/user" component={UserRouter} />
-      <LoginRequiredRoute path="/admin" component={AdminRouter} />
+      <LoginRequiredRoute path="/admin" />;
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 }
+
+LoginRequiredRoute.propTypes = {
+  rest: PropTypes.object,
+};
