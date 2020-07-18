@@ -19,7 +19,7 @@ import Otp from "../Otp";
 
 function ResetPassword({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
-  const resetSt = useSelector((store) => store.reset);
+  const resetSt = useSelector((store) => store.auth.reset);
   const [emailError, setEmailError] = useState(null);
   const [msg, setMsg] = useState(false);
 

@@ -18,7 +18,7 @@ import { isEmpty } from "../../shared/utils";
 
 function SignUp({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
-  const registerSt = useSelector((store) => store.register);
+  const registerSt = useSelector((store) => store.auth.register);
   const [nameError, setNameError] = useState(null);
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);

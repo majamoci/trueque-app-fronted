@@ -36,13 +36,12 @@ const fetchRegister = (data) => {
   return (dispatch) => {
     dispatch(fetchRegisterRequest);
     Axios.post(`${process.env.REACT_APP_API_URI}api/register`, data)
-    .then((response) => {
+      .then((response) => {
         const { access_token, roles } = response.data;
+        let _roles = [];
+        roles.map((role) => (_roles = [..._roles, role.name.charAt(0)]));
+        sessionStorage.setItem("AUTH", `${access_token},${_roles}`);
 
-        // guardamos en sessionStorage token
-        sessionStorage.setItem("ACCESS_TOKEN", access_token);
-        sessionStorage.setItem("AUTH", `${access_token},${roles.charAt(0)}`);
-        sessionStorage.setItem("ROLES", JSON.stringify([roles]));
         dispatch(fetchRegisterSuccess(response.data));
       })
       .catch((error) => {

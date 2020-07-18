@@ -12,7 +12,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { closeDrawer } from "../../redux/actions/drawer.action";
-import { useStyles } from "../dashboard/styles";
+import { useStyles } from "./styles";
 
 const Links = ({ items }) => {
   const history = useHistory();
@@ -41,7 +41,7 @@ const Links = ({ items }) => {
 export default function DrawerTemplate({ list }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const drawerStore = useSelector((state) => state.drawer);
+  const drawerStore = useSelector((state) => state.auth.drawer);
 
   const handleDrawerClose = () => {
     dispatch(closeDrawer(false));

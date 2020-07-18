@@ -11,7 +11,7 @@ import { isEmpty } from "../../shared/utils";
 
 function ValidateOTP({ _handleChange, _handleSubmit, open: openState }) {
   const history = useHistory();
-  const otpSt = useSelector((store) => store.otp);
+  const otpSt = useSelector((store) => store.auth.otp);
   const [open, setOpen] = useState(false);
   const [otpError, setOtpError] = useState(null);
 

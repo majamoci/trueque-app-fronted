@@ -18,8 +18,8 @@ import { Link } from "react-router-dom";
 
 function NewPassword({ _handleChange, _handleSubmit, values, msg }) {
   const classes = useStyles();
-  const changeSt = useSelector((store) => store.change);
-  const otpSt = useSelector((store) => store.otp);
+  const changeSt = useSelector((store) => store.auth.change);
+  const otpSt = useSelector((store) => store.auth.otp);
   const [pwError, setPwError] = useState(null);
   const [pw2Error, setPw2Error] = useState(null);
   const [ok, setOk] = useState(null);

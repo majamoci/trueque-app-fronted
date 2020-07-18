@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import fetchChange from "../../redux/actions/change-pw.action";
 import { fetchResetReset } from "../../redux/actions/send-pw.action";
 import { fetchOtpReset } from "../../redux/actions/otp.action";
-import NewPassword from "./forms/newPasswordForm";
+import NewPassword from "./forms/NewPasswordForm";
 import { isEmpty } from "../shared/utils";
 
 const initialForm = {
@@ -14,7 +14,7 @@ const initialForm = {
 
 export default function ChangePw() {
   const dispatch = useDispatch();
-  const otpSt = useSelector((store) => store.otp);
+  const otpSt = useSelector((store) => store.auth.otp);
   const [token, setToken] = useState("");
   const [msg, setMsg] = useState("no autorizado");
 
