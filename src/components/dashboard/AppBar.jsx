@@ -15,7 +15,7 @@ import { useStyles } from "./styles";
 export default function DashboardBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const drawerSt = useSelector((state) => state.drawer);
+  const drawerSt = useSelector((state) => state.auth.drawer);
 
   const handleDrawerOpen = () => {
     dispatch(openDrawer(true));

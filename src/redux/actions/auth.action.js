@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Auth from "../../components/shared/utils";
 
 export const FETCH_AUTH_REQUEST = "FETCH_AUTH_REQUEST";
 export const FETCH_AUTH_SUCCESS = "FETCH_AUTH_SUCCESS";
@@ -33,6 +34,7 @@ export const fetchAuthReset = () => {
 
 // la data es { email, password, remember }
 const fetchLogin = (data) => {
+  const auth = new Auth();
   const { remember, ...formData } = data;
   return (dispatch) => {
     dispatch(fetchAuthRequest);
@@ -42,12 +44,7 @@ const fetchLogin = (data) => {
         let _roles = [];
         roles.map((role) => (_roles = [..._roles, role.name.charAt(0)]));
 
-        // remember = true
-        if (remember) {
-          localStorage.setItem("AUTH", `${access_token},${_roles}`);
-        } else {
-          sessionStorage.setItem("AUTH", `${access_token},${_roles}`);
-        }
+        auth.login(remember, `${access_token},${_roles}`);
         dispatch(fetchAuthSuccess(response.data));
       })
       .catch((error) => {

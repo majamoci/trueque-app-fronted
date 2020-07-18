@@ -31,3 +31,7 @@ TemplateAdmin.propTypes = {
   children: PropTypes.node.isRequired,
   drawer: PropTypes.elementType,
 };
+
+TemplateAdmin.defaultProps = {
+  drawer: '',
+};

@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import fetchLogin from "../../redux/actions/auth.action";
-import SignIn from "./forms/singInForm";
+import SignIn from "./forms/SingInForm";
 import Auth from "../shared/utils";
 
 const initialForm = {
@@ -15,7 +15,7 @@ const initialForm = {
 export default function Login() {
   let dispatch = useDispatch();
   const _auth = new Auth();
-  const loginSt = useSelector((state) => state.login);
+  const loginSt = useSelector((state) => state.auth.login);
 
   const handleSubmit = (formData) => {
     dispatch(fetchLogin(formData));

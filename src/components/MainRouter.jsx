@@ -10,34 +10,36 @@ import ResetPw from "./auth/ResetPw";
 import Auth from "./shared/utils";
 import Login from "./auth/Login";
 
-const LoginRequiredRoute = ({ ...rest }) => (
-  <Route
-  {...rest}
-  render={(props) => {
-      const auth = new Auth();
-      switch (auth.role()) {
-        case "U": {
-          return <UserRouter />;
+function LoginRequiredRoute({ ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        const auth = new Auth();
+        switch (auth.role()) {
+          case "U": {
+            return <UserRouter />;
+          }
+          case "A": {
+            return <AdminRouter />;
+          }
+          default: {
+            return (
+              <Redirect
+                to={{
+                  pathname: "/login",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+            );
+          }
         }
-        case "A": {
-          return <AdminRouter />;
-        }
-        default: {
-          return (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: {
-                  from: props.location,
-                },
-              }}
-            />
-          );
-        }
-      }
-    }}
-  />
-);
+      }}
+    />
+  );
+}
 
 export default function MainRouter() {
   return (
@@ -58,4 +60,8 @@ export default function MainRouter() {
 
 LoginRequiredRoute.propTypes = {
   rest: PropTypes.object,
+};
+
+LoginRequiredRoute.defaultProps = {
+  rest: '',
 };

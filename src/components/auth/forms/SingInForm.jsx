@@ -19,7 +19,7 @@ import { isEmpty } from "../../shared/utils";
 
 function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
   const classes = useStyles();
-  const loginSt = useSelector((state) => state.login);
+  const loginSt = useSelector((state) => state.auth.login);
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
 

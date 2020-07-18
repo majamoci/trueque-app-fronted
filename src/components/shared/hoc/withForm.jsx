@@ -31,15 +31,13 @@ export const withForm = (View) =>
 
     render() {
       return (
-        <>
-          <View
-            {...this.props}
-            values={this.state}
-            _handleSubmit={this.handleSubmit}
-            _handleChange={this.handleChange}
-            _handleRemember={this.handleRemember}
-          />
-        </>
+        <View
+          {...this.props}
+          values={this.state}
+          _handleSubmit={this.handleSubmit}
+          _handleChange={this.handleChange}
+          _handleRemember={this.handleRemember}
+        />
       );
     }
   };

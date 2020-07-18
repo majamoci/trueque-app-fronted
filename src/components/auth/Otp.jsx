@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
-import ValidateOTP from "./forms/validateOTP";
+import ValidateOTP from "./forms/ValidateOTP";
 import fetchOtp from "../../redux/actions/otp.action";
 
 const initialForm = {
