@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import TemplateAdmin from "../dashboard/TemplateAdmin";
 import UDashboard from "./Dashboard";
-import UPublicaciones from "./Publicaciones";
+import Publicaciones from "./Publicaciones";
+import NewPub from "./new-pub";
 import UserMenu from "./Actions";
 
 export default function AdminRouter() {
@@ -14,7 +15,10 @@ export default function AdminRouter() {
           <UDashboard />
         </Route>
         <Route exact path={`${path}/publicaciones`}>
-          <UPublicaciones />
+          <Publicaciones />
+        </Route>
+        <Route exact path={`${path}/publicaciones/nueva`}>
+          <NewPub />
         </Route>
         <Route path="*">
           <Redirect to={path} />

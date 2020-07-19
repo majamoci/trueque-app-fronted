@@ -31,11 +31,11 @@ export default class Auth {
   }
 
   role() {
-    let token = "N"; // no login
+    let r = "N"; // no login
 
-    if (this.isLocal) token = this.local.getItem("AUTH");
-    if (this.isSession) token = this.session.getItem("AUTH");
-    return token.charAt(token.length - 1);
+    if (this.isLocal) r = this.local.getItem("AUTH");
+    if (this.isSession) r = this.session.getItem("AUTH");
+    return r.charAt(r.length - 1);
   }
 
   login(type, data) {
@@ -48,5 +48,11 @@ export default class Auth {
     if (this.isSession) this.session.removeItem('AUTH');
   }
 
-  token() {}
+  token() {
+    let token = ""; // no login
+
+    if (this.isLocal) token = this.local.getItem("AUTH");
+    if (this.isSession) token = this.session.getItem("AUTH");
+    return token.slice(0, token.length - 2);
+  }
 }

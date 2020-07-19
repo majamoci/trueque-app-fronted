@@ -7,7 +7,7 @@ import { TextField, DialogContentText, DialogContent } from "@material-ui/core";
 import { withForm } from "../../shared/hoc/withForm";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { isEmpty } from "../../shared/utils";
+import { isEmpty } from "../../../utils";
 
 function ValidateOTP({ _handleChange, _handleSubmit, open: openState }) {
   const history = useHistory();

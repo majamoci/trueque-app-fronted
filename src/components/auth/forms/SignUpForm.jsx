@@ -14,7 +14,7 @@ import Copyright from "../../shared/copyright";
 import { useSelector } from "react-redux";
 import { useStyles } from "../styles";
 import { withForm } from "../../shared/hoc/withForm";
-import { isEmpty } from "../../shared/utils";
+import { isEmpty } from "../../../utils";
 
 function SignUp({ _handleChange, _handleSubmit }) {
   const classes = useStyles();

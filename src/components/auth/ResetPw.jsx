@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ResetPassword from "./forms/ResetPasswordForm";
 import fetchReset from "../../redux/actions/send-pw.action";
-import Auth from "../shared/utils";
+import Auth from "../../utils";
 
 const initialForm = {
   email: "",
@@ -24,6 +24,6 @@ export default function ResetPw() {
   return auth ? (
     <Redirect to="/admin" />
   ) : (
-    <ResetPassword handleSubmit={handleSubmit} values={initialForm} />
+    <ResetPassword onSubmit={handleSubmit} values={initialForm} />
   );
 }

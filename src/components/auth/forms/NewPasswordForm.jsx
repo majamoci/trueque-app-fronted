@@ -12,7 +12,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Copyright from "../../shared/copyright";
 import { useStyles } from "../styles";
 import { withForm } from "../../shared/hoc/withForm";
-import { isEmpty } from "../../shared/utils";
+import { isEmpty } from "../../../utils";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 

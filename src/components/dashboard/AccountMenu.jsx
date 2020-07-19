@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Avatar, Menu, MenuItem } from "@material-ui/core";
 import { fetchAuthReset } from "../../redux/actions/auth.action";
 import { fetchRegisterReset } from "../../redux/actions/register.action";
-import Auth from "../shared/utils";
+import Auth from "../../utils";
 
 export default function AccountMenu() {
   const history = useHistory();

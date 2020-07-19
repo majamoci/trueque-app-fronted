@@ -17,7 +17,7 @@ export default function Otp({ open }) {
 
   return (
     <ValidateOTP
-      handleSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       values={initialForm}
       open={open}
     />

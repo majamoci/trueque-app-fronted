@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import fetchLogin from "../../redux/actions/auth.action";
 import SignIn from "./forms/SingInForm";
-import Auth from "../shared/utils";
+import Auth from "../../utils";
 
 const initialForm = {
   email: "",
@@ -27,6 +27,6 @@ export default function Login() {
   return auth ? (
     <Redirect to="/admin" />
   ) : (
-    <SignIn handleSubmit={handleSubmit} values={initialForm} />
+    <SignIn onSubmit={handleSubmit} values={initialForm} />
   );
 }

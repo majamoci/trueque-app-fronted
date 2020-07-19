@@ -23,7 +23,7 @@ export const withForm = (View) =>
       e.preventDefault();
 
       // enviamos los values del form
-      this.props.handleSubmit({ ...this.state });
+      this.props.onSubmit({ ...this.state });
 
       // vaciamos el state
       // this.setState(this.props.values);

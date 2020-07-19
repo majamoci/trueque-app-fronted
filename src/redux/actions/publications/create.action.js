@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Auth from "../../../utils";
 
 export const FETCH_CREATE_PUB_REQUEST = "FETCH_CREATE_PUB_REQUEST";
 export const FETCH_CREATE_PUB_SUCCESS = "FETCH_CREATE_PUB_SUCCESS";
@@ -31,11 +32,26 @@ export const fetchCreatePubReset = () => {
   };
 };
 
-// la data es { 'title', 'price', 'address', 'category', 'available', 'description', 'photos', 'active' }
+// la data es { 'title', 'price', 'address', 'category', 'available', 'description', 'active' }
 const fetchCreatePub = (data) => {
+  let formData = new FormData();
+  const auth = new Auth();
+  const {photos, ...rest} = data;
+  const new_data = {...rest, ...photos};
+
+  for (let key in new_data) {
+    if (["0", "1", "2", "3", "4"].includes(key))
+      formData.append("photos[]", new_data[key]);
+    else formData.append(key, new_data[key]);
+  }
+
   return (dispatch) => {
     dispatch(fetchCreatePubRequest);
-    Axios.post(`${process.env.REACT_APP_API_URI}api/publication`, data)
+    Axios.post(`${process.env.REACT_APP_API_URI}api/publication`, formData, {
+      headers: {
+        Authorization: `Bearer ${auth.token()}`,
+      },
+    })
       .then((response) => {
         dispatch(fetchCreatePubSuccess(response.data));
       })

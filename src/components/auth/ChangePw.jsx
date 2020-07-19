@@ -4,7 +4,7 @@ import fetchChange from "../../redux/actions/change-pw.action";
 import { fetchResetReset } from "../../redux/actions/send-pw.action";
 import { fetchOtpReset } from "../../redux/actions/otp.action";
 import NewPassword from "./forms/NewPasswordForm";
-import { isEmpty } from "../shared/utils";
+import { isEmpty } from "../../utils";
 
 const initialForm = {
   reset_password: "",
@@ -41,6 +41,6 @@ export default function ChangePw() {
   }, [otpSt]);
 
   return (
-    <NewPassword handleSubmit={handleSubmit} values={initialForm} msg={msg} />
+    <NewPassword onSubmit={handleSubmit} values={initialForm} msg={msg} />
   );
 }

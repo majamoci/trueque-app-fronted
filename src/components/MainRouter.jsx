@@ -7,7 +7,7 @@ import UserRouter from "./user/UserRouter";
 import Register from "./auth/Register";
 import ChangePw from "./auth/ChangePw";
 import ResetPw from "./auth/ResetPw";
-import Auth from "./shared/utils";
+import Auth from "../utils";
 import Login from "./auth/Login";
 
 function LoginRequiredRoute({ ...rest }) {
@@ -63,5 +63,5 @@ LoginRequiredRoute.propTypes = {
 };
 
 LoginRequiredRoute.defaultProps = {
-  rest: '',
+  rest: {},
 };
