@@ -28,6 +28,9 @@ export default function AdminRouter() {
         <Route exact path={`${path}/Account`}>
           <Account />
         </Route>
+        <Route exact path={`${path}/Account`}>
+          <Account />
+        </Route>
         <Route path="*">
           <Redirect to={path} />
         </Route>
