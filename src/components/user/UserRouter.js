@@ -4,6 +4,7 @@ import TemplateAdmin from "../dashboard/TemplateAdmin";
 import UDashboard from "./Dashboard";
 import UPublicaciones from "./Publicaciones";
 import UserMenu from "./Actions";
+import Account from "../Account/index";
 
 export default function AdminRouter() {
   const { path } = useRouteMatch();
@@ -15,6 +16,9 @@ export default function AdminRouter() {
         </Route>
         <Route exact path={`${path}/publicaciones`}>
           <UPublicaciones />
+        </Route>
+        <Route exact path={`${path}/Account`}>
+          <Account />
         </Route>
         <Route path="*">
           <Redirect to={path} />
