@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { Avatar, Menu, MenuItem } from "@material-ui/core";
 import { fetchAuthReset } from "../../redux/actions/auth.action";
 import { fetchRegisterReset } from "../../redux/actions/register.action";
@@ -8,6 +8,7 @@ import Auth from "../../utils";
 
 export default function AccountMenu() {
   const history = useHistory();
+  const { path } = useRouteMatch();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -16,6 +17,11 @@ export default function AccountMenu() {
   };
 
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const goAccount = () => {
+    history.replace({pathname: `${path}/account`});
     setAnchorEl(null);
   };
 
@@ -52,7 +58,7 @@ export default function AccountMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Perfil</MenuItem>
+        <MenuItem onClick={goAccount}>Perfil</MenuItem>
         <MenuItem onClick={handleClose}>Mis Publicaciones</MenuItem>
         <MenuItem onClick={closeSession}>Cerrar Sesión</MenuItem>
       </Menu>
