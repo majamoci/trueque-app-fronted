@@ -5,13 +5,17 @@ const init_state = {
 };
 
 function dialog(state = init_state, action) {
-  switch (action.type) {
-    case DIALOG_OPEN: {
+  switch (action.type) 
+  {
+    case DIALOG_OPEN: 
+    {
       return {
         open: true,
       };
     }
-    case DIALOG_CLOSE: {
+
+    case DIALOG_CLOSE: 
+    {
       return {
         open: false,
       };
