@@ -5,14 +5,15 @@ import reset from "./send-pw.reducer";
 import change from "./change-pw.reducer";
 import otp from "./otp.reducer";
 import drawer from './drawer.reducer';
-
+import dialog from './dialog.reducer'
 const rootReducer = combineReducers({
   register,
   login,
   reset,
   otp,
   change,
-  drawer
+  drawer,
+  dialog
 });
 
 export default rootReducer;

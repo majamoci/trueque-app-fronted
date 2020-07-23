@@ -19,7 +19,7 @@ export default function ResetPw() {
   };
 
   const auth =
-    (resetSt && resetSt.data.status_code === 200) || _auth;
+    (resetSt && resetSt.data.status_code === 200) || _auth.authenticated();
 
   return auth ? (
     <Redirect to="/admin" />

@@ -22,7 +22,7 @@ export default function Register() {
   };
 
   const auth =
-    (registerSt && registerSt.data.status_code === 200) || _auth;
+    (registerSt && registerSt.data.status_code === 200) || _auth.authenticated();
 
   return auth ? (
     <Redirect to="/admin" />
