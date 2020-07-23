@@ -55,13 +55,11 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function CustomizedDialogs() {
-  const dialogSt=useSelector(store =>store.dialog)
+  const dialogSt=useSelector((store) =>store.dialog)
   const dispatch=useDispatch()
   
   const handleClose = () => {
-    dispatch(systemDialog(false))
-
-    
+    dispatch(systemDialog(false))    
   };
 
   return (
