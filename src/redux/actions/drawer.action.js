@@ -14,12 +14,3 @@ export const closeDrawer = (open) => {
     payload: open,
   };
 };
-
-const systemDrawer = (click) => {
-  return (dispatch) => {
-    if (click) dispatch(openDrawer);
-    else dispatch(closeDrawer);
-  };
-};
-
-export default systemDrawer;
