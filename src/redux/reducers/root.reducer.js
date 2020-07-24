@@ -14,7 +14,7 @@ const auth = combineReducers({
   reset,
   otp,
   change,
-  drawer
+  drawer,
 });
 
 const user = combineReducers({
