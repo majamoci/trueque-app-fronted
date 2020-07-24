@@ -171,7 +171,7 @@ function NewPublication({ _handleChange, _handleSubmit, values }) {
           color="primary"
           className={classes.button}
         >
-          borrador
+          guardar como borrador
         </Button>
       </div>
     </form>
