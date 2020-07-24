@@ -22,7 +22,8 @@ export default function Publicaciones() {
       {/* 👇 Aqui construimos las tabs  */}
       {/* 👇 este componente va a renderizar el grid + cards  */}
       {/* debemos reutilizarlo dentro de cada tab  */}
-      {/* aprovechemos ese useRouteMatch que ya esta intanciado  */}
+      {/* aprovechemos ese useRouteMatch que ya esta instanciado  */}
+      {/* en la prop type, iria la tab que queremos que se cargue */}
       <ViewPub type="borradores" />
     </>
   );

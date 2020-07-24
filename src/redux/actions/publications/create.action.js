@@ -32,7 +32,7 @@ export const fetchCreatePubReset = () => {
   };
 };
 
-// la data es { 'title', 'price', 'address', 'category', 'available', 'description', 'active' }
+// la data es { 'title', 'price', 'address', 'category', 'available', 'description', 'state' }
 const fetchCreatePub = (data) => {
   let formData = new FormData();
   const auth = new Auth();
