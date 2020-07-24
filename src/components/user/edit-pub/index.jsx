@@ -23,7 +23,7 @@ const initial_form = {
   address: "",
   description: "",
   available: "one",
-  active: "draft",
+  state: "draft",
 };
 
 export default function Index() {
