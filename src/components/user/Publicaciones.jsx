@@ -1,23 +1,34 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { Container } from "@material-ui/core";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import { makeStyles } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import { Link, useRouteMatch } from "react-router-dom";
 import ViewPub from "./view-pub";
 
+const useStyles = makeStyles(theme => ({
+  fab: {
+    position: 'fixed',
+    bottom: 20,
+    right: 20,
+  }
+}))
+
 export default function Publicaciones() {
   const { path } = useRouteMatch();
+  const classes = useStyles();
 
   return (
     <>
       <Container maxWidth="xs">
-        <Button
+        <Fab
           component={Link}
           to={`${path}/nueva`}
-          variant="contained"
           color="primary"
+          className={classes.fab}
         >
-          Nueva Publicación
-        </Button>
+          <AddIcon />
+        </Fab>
       </Container>
       {/* 👇 Aqui construimos las tabs  */}
       {/* 👇 este componente va a renderizar el grid + cards  */}
