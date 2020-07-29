@@ -5,8 +5,10 @@ import reset from "./send-pw.reducer";
 import change from "./change-pw.reducer";
 import otp from "./otp.reducer";
 import drawer from './drawer.reducer';
+import dialog from "./dialog.reducer";
 import _new from './publications/create.reducer';
-import dialog from "./dialog.reducer";;
+import categories from './publications/categories.reducer';
+import publications from './publications/publications.reducer';
 
 const auth = combineReducers({
   register,
@@ -23,6 +25,8 @@ const user = combineReducers({
 
 const publication = combineReducers({
   _new,
+  categories,
+  publications
 });
 
 const rootReducer = combineReducers({
