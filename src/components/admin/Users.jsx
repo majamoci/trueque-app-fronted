@@ -10,11 +10,12 @@ export default function Users() {
 
   const handleOpen = () => dispatch(openDialog(true));
 
-  const data = [{ username: "Rolando", email: "yo@hotmail.com" }];
+  const data = [{ username: "Rolando", email: "yo@hotmail.com"}];
 
   const columns = [
     { title: "Nombre de usuario", field: "username" },
     { title: "E-mail", field: "email" },
+        
   ];
 
   const actions = [

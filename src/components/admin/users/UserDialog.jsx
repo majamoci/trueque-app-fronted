@@ -9,21 +9,40 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import { useSelector, useDispatch } from "react-redux";
 import { closeDialog } from "../../../redux/actions/dialog.action";
+import Avatar from '@material-ui/core/Avatar';
+import Badge from '@material-ui/core/Badge';
+import Card from '@material-ui/core/Card';
+import { CardActionArea } from "@material-ui/core";
+import CardMedia from '@material-ui/core/CardMedia';
+import CallIcon from '@material-ui/icons/Call';
+import { green } from '@material-ui/core/colors';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
+import SettingsCellIcon from '@material-ui/icons/SettingsCell';
+import IconButton from '@material-ui/core/IconButton';
+//import EditIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
+
+  relative:{
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    position: 'relative',
+    //bottom: theme.spacing(100),
+    left: theme.spacing(2),
+    top: theme.spacing(2),
+  },
+     
   root: {
-    margin: 0,
-    padding: theme.spacing(2),
+    maxWidth: 345,
   },
-  closeButton: {
-    position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
+
 }));
 
+
 export default function UserDialog() {
+  const classes = useStyles();
+  
+
   const dispatch = useDispatch();
   // const classes = useStyles();
   const dialogSt = useSelector((state) => state.user.dialog);
@@ -31,28 +50,59 @@ export default function UserDialog() {
   const handleClose = () => dispatch(closeDialog(false));
 
   return (
+
+
+    
     <Dialog
       onClose={handleClose}
       aria-labelledby="customized-dialog-title"
       open={dialogSt.open}
     >
-      <DialogTitle>Datos del usuario</DialogTitle>
+
+      <Badge
+        overlap="circle"
+        
+        anchorOrigin={{
+          vertical: 'bottom',          
+          horizontal: 'left',
+        }}
+        badgeContent={
+          
+          <Avatar  src="/contemplative-reptile.jpg " className={classes.relative} />
+          
+          
+      }     
+        
+      >
+        <Card className={classes.root} >
+          <CardActionArea>
+          <CardMedia
+            component="img"
+            alt="Contemplative Reptile"
+            height="140"
+            
+            image="/contemplative-reptile.jpg"//la imagen esta en la carpeta public
+            title="Contemplative Reptile"  
+          />
+
+          </CardActionArea>
+        </Card>
+      </Badge>
+      
       <DialogContent dividers>
+
+        <Typography variant="h5" gutterBottom>
+            <br/>Rolando Caiza
+        </Typography>
+                   
         <Typography gutterBottom>
-          {/* Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. */}
-          Rolando Caiza
+          <SettingsCellIcon style={{ color: green[500] }} /> 097 919 6435  
+        </Typography>
+        <Typography gutterBottom>          
+            <CallIcon style={{ color: green[500] }} /> 3731700      
         </Typography>
         <Typography gutterBottom>
-          {/* Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor. */}
-          Ciudad: Latacunga
-        </Typography>
-        <Typography gutterBottom>
-          {/* Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla. */}
-          Teléfono: 097 919 6435
+            <LocationCityIcon style={{ color: green[500] }} /> Latacunga           
         </Typography>
       </DialogContent>
       <DialogActions>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   img: {
@@ -18,7 +19,16 @@ export default function GridPub({ data }) {
           <img src={item.img} alt={item.titulo} className={classes.img} />
           <p>{item.titulo}</p>
           <p>{item.category}</p>
-          {item.button}
+          {/* {item.button} */}
+
+          <Button
+          //component={Link}
+          //to={`${path}/nueva`}
+          variant="contained"
+          color="primary"
+        >
+          Ver detalles
+        </Button>
         </Grid>
       ))}
     </Grid>
