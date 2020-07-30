@@ -59,7 +59,6 @@ export default function AccountMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={goAccount}>Perfil</MenuItem>
-        <MenuItem onClick={handleClose}>Mis Publicaciones</MenuItem>
         <MenuItem onClick={closeSession}>Cerrar Sesión</MenuItem>
       </Menu>
     </>

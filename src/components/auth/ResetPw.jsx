@@ -6,7 +6,7 @@ import fetchReset from "../../redux/actions/send-pw.action";
 import Auth from "../../utils";
 
 const initialForm = {
-  email: "",
+  reset_email: "",
 };
 
 export default function ResetPw() {

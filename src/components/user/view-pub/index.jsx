@@ -102,10 +102,6 @@ export default function ViewPub({ type }) {
   // const viewSt = useSelector(store => store.publications._view);
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    // dispatch(fetchGetPub());
-  }, []);
-
   // useEffect(() => {
   //   const { errors: res, data } = viewSt;
   //   if (!isEmpty(res)) {
@@ -114,28 +110,32 @@ export default function ViewPub({ type }) {
   //   }
 
   //   if (!isEmpty(data)) {
-  //     // const {  } = data;
-  //     // setCards(publicados);
-  //     setCards(borradores);
-  //     // setCards(intercambiados);
+  //     // const { publications } = data;
+  //     // setCards(publications);
   //   }
   // }, [viewSt])
 
   useEffect(() => {
+    // type: draft|published|complete
+    let state = 'published';
     switch (type) {
       case "borradores": {
         setCards(borradores);
+        state = 'draft';
         break;
       }
       case "intercambiados": {
         setCards(intercambiados);
+        state = 'complete';
         break;
       }
       default: {
         setCards(publicados);
+        state = 'published';
         break;
       }
     }
+    // dispatch(fetchGetPub(state));
   }, [type]);
 
   return <GridPub data={cards} />;

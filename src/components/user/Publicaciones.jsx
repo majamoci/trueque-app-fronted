@@ -1,35 +1,36 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { Container } from "@material-ui/core";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import { makeStyles } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import { Link, useRouteMatch } from "react-router-dom";
 import ViewPub from "./view-pub";
 
+const useStyles = makeStyles(theme => ({
+  fab: {
+    position: 'fixed',
+    bottom: 20,
+    right: 20,
+  }
+}))
+
 export default function Publicaciones() {
   const { path } = useRouteMatch();
+  const classes = useStyles();
 
   return (
     <>
-      
-      {/* 👇 Aqui construimos las tabs  */}
-      {/* 👇 este componente va a renderizar el grid + cards  */}
-      {/* debemos reutilizarlo dentro de cada tab  */}
-      {/* aprovechemos ese useRouteMatch que ya esta intanciado  */}
-      <ViewPub type="borradores" />
-      <Container maxWidth="xs" align="right">
+      <Container maxWidth="xs">
         <Fab
           component={Link}
           to={`${path}/nueva`}
           color="primary"
-          aria-label="add"
-          //fixed          
-          //right={spacing(2)}
-        >     
-             
+          className={classes.fab}
+        >
           <AddIcon />
         </Fab>
       </Container>
+      
     </>
   );
 }
