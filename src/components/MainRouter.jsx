@@ -9,6 +9,7 @@ import ChangePw from "./auth/ChangePw";
 import ResetPw from "./auth/ResetPw";
 import Auth from "../utils";
 import Login from "./auth/Login";
+import Home from "./home";
 
 function LoginRequiredRoute({ ...rest }) {
   return (
@@ -44,10 +45,7 @@ function LoginRequiredRoute({ ...rest }) {
 export default function MainRouter() {
   return (
     <Switch>
-      <Route exact path="/">
-        <h2>Hola, esta es la pagina principal</h2>
-        <Link to="/login">Ingresar</Link>
-      </Route>
+      <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/reset-password" component={ResetPw} />

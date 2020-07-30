@@ -7,7 +7,6 @@ import otp from "./otp.reducer";
 import drawer from './drawer.reducer';
 import dialog from "./dialog.reducer";
 import _new from './publications/create.reducer';
-import categories from './publications/categories.reducer';
 import publications from './publications/publications.reducer';
 
 const auth = combineReducers({
@@ -25,7 +24,6 @@ const user = combineReducers({
 
 const publication = combineReducers({
   _new,
-  categories,
   publications
 });
 
