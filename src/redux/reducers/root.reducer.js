@@ -5,7 +5,8 @@ import reset from "./send-pw.reducer";
 import change from "./change-pw.reducer";
 import otp from "./otp.reducer";
 import drawer from './drawer.reducer';
-import dialog from "./dialog.reducer";
+import dialog from "./users/dialog.reducer";
+import users from "./users/users.reducer";
 import _new from './publications/create.reducer';
 import publications from './publications/publications.reducer';
 
@@ -19,7 +20,8 @@ const auth = combineReducers({
 });
 
 const user = combineReducers({
-  dialog
+  dialog,
+  users
 });
 
 const publication = combineReducers({

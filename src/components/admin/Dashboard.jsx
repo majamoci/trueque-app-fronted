@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function ADashboard() {
+export default function AdminDashboard() {
   return <h2>Admin</h2>;
 }

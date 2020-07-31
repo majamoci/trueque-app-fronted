@@ -17,8 +17,8 @@ const useStyles = makeStyles({
   },
   text: {
     display: "flex",
-    alignItems: 'center',
-  }
+    alignItems: "center",
+  },
 });
 
 export default function PubCard({ item }) {
@@ -45,12 +45,22 @@ export default function PubCard({ item }) {
             {"$ "}
             {item.price}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={classes.text}
+          >
             <TrackChangesIcon />
             &nbsp;
             <span>A 543m de distancia</span>
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={classes.text}
+          >
             <CheckCircleIcon />
             &nbsp;
             <span>Disponible</span>

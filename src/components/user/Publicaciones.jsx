@@ -20,7 +20,7 @@ export default function Publicaciones() {
 
   return (
     <>
-      <Container maxWidth="xs">
+      <Container maxWidth="lg">
         <Fab
           component={Link}
           to={`${path}/nueva`}
@@ -29,13 +29,9 @@ export default function Publicaciones() {
         >
           <AddIcon />
         </Fab>
+
+        <ViewPub type="borradores" />
       </Container>
-      {/* 👇 Aqui construimos las tabs  */}
-      {/* 👇 este componente va a renderizar el grid + cards  */}
-      {/* debemos reutilizarlo dentro de cada tab  */}
-      {/* aprovechemos ese useRouteMatch que ya esta instanciado  */}
-      {/* en la prop type, iria la tab que queremos que se cargue */}
-      <ViewPub type="borradores" />
     </>
   );
 }
