@@ -25,7 +25,7 @@ export const fetchResetFailure = (error) => {
   };
 };
 
-export const fetchResetReset = () => {
+export const fetchResetBlank = () => {
   return {
     type: FETCH_SEND_PW_RESET,
   };

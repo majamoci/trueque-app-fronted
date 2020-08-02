@@ -11,7 +11,7 @@ const initial_state = {
   errors: {},
 };
 
-function _new(state = initial_state, action) {
+function newP(state = initial_state, action) {
   switch (action.type) {
     case FETCH_CREATE_PUB_REQUEST: {
       return {
@@ -41,4 +41,4 @@ function _new(state = initial_state, action) {
   }
 }
 
-export default _new;
+export default newP;

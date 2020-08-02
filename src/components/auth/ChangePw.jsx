@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import fetchChange from "../../redux/actions/change-pw.action";
-import { fetchResetReset } from "../../redux/actions/send-pw.action";
-import { fetchOtpReset } from "../../redux/actions/otp.action";
-import NewPassword from "./forms/NewPasswordForm";
 import { isEmpty } from "../../utils";
+import NewPassword from "./forms/NewPasswordForm";
+import { fetchOtpReset } from "../../redux/actions/otp.action";
+import fetchChange from "../../redux/actions/change-pw.action";
+import { openBackdrop } from "../../redux/ducks/_new_psswd.duck";
+import { fetchResetBlank } from "../../redux/actions/send-pw.action";
+
 
 const initialForm = {
   reset_password: "",
@@ -23,8 +25,11 @@ export default function ChangePw() {
     dispatch(fetchChange(formData));
 
     // limpiamos el store
-    dispatch(fetchResetReset());
+    dispatch(fetchResetBlank());
     dispatch(fetchOtpReset());
+
+    // activamos el backdrop
+    dispatch(openBackdrop(true));
   };
 
   useEffect(() => {

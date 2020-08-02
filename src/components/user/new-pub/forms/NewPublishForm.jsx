@@ -17,7 +17,7 @@ import { fetchCreatePubReset } from "../../../../redux/actions/publications/crea
 function NewPublication({ _handleChange, _handleSubmit, values }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const newSt = useSelector((store) => store.publication._new);
+  const newSt = useSelector((store) => store.publication.newP);
   const [errors, setErrors] = useState({});
   const [dropArea, setDropArea] = useState(0);
   const [debounceKey] = useDebounce(dropArea, 1);
