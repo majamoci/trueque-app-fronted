@@ -40,5 +40,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   okMsg: {
     color: theme.palette.success.main,
-  }
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));

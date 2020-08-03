@@ -1,9 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import fetchLogin from "../../redux/actions/auth.action";
-import SignIn from "./forms/SingInForm";
 import Auth from "../../utils";
+import SignIn from "./forms/SingInForm";
+import fetchLogin from "../../redux/actions/auth.action";
+import { openBackdrop } from "../../redux/ducks/_login.duck";
 
 const initialForm = {
   email: "",
@@ -19,6 +20,9 @@ export default function Login() {
 
   const handleSubmit = (formData) => {
     dispatch(fetchLogin(formData));
+
+    // activamos el backdrop
+    dispatch(openBackdrop(true));
   };
 
   const auth =

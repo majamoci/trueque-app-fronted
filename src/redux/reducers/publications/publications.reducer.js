@@ -11,7 +11,7 @@ const initial_state = {
   errors: {},
 };
 
-function categories(state = initial_state, action) {
+function publications(state = initial_state, action) {
   switch (action.type) {
     case FETCH_PUBS_REQUEST: {
       return {
@@ -41,4 +41,4 @@ function categories(state = initial_state, action) {
   }
 }
 
-export default categories;
+export default publications;

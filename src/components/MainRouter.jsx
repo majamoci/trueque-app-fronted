@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { closeBackdrop as closeBAdmin } from "../redux/ducks/_login.duck";
+import { closeBackdrop as closeBRegister } from "../redux/ducks/_register.duck";
 import { NotFound } from "./shared/ViewError";
 import AdminRouter from "./admin/AdminRouter";
 import UserRouter from "./user/UserRouter";
@@ -9,8 +12,11 @@ import ChangePw from "./auth/ChangePw";
 import ResetPw from "./auth/ResetPw";
 import Auth from "../utils";
 import Login from "./auth/Login";
+import Home from "./home";
 
 function LoginRequiredRoute({ ...rest }) {
+  const dispatch = useDispatch();
+
   return (
     <Route
       {...rest}
@@ -18,9 +24,11 @@ function LoginRequiredRoute({ ...rest }) {
         const auth = new Auth();
         switch (auth.role()) {
           case "U": {
+            dispatch(closeBRegister(false));
             return <UserRouter />;
           }
           case "A": {
+            dispatch(closeBAdmin(false));
             return <AdminRouter />;
           }
           default: {
@@ -44,10 +52,7 @@ function LoginRequiredRoute({ ...rest }) {
 export default function MainRouter() {
   return (
     <Switch>
-      <Route exact path="/">
-        <h2>Hola, esta es la pagina principal</h2>
-        <Link to="/login">Ingresar</Link>
-      </Route>
+      <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/reset-password" component={ResetPw} />

@@ -1,9 +1,8 @@
 const {
-  FETCH_CREATE_PUB_REQUEST,
-  FETCH_CREATE_PUB_SUCCESS,
-  FETCH_CREATE_PUB_FAILURE,
-  FETCH_CREATE_PUB_RESET,
-} = require("../../actions/publications/create.action");
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE,
+} = require("../../actions/users/users.action");
 
 const initial_state = {
   loading: false,
@@ -11,34 +10,31 @@ const initial_state = {
   errors: {},
 };
 
-function newP(state = initial_state, action) {
+function users(state = initial_state, action) {
   switch (action.type) {
-    case FETCH_CREATE_PUB_REQUEST: {
+    case FETCH_USERS_REQUEST: {
       return {
         ...state,
         loading: true,
       };
     }
-    case FETCH_CREATE_PUB_SUCCESS: {
+    case FETCH_USERS_SUCCESS: {
       return {
         loading: false,
         data: action.payload,
         errors: {},
       };
     }
-    case FETCH_CREATE_PUB_FAILURE: {
+    case FETCH_USERS_FAILURE: {
       return {
         loading: false,
         data: {},
         errors: action.payload,
       };
     }
-    case FETCH_CREATE_PUB_RESET: {
-      return initial_state;
-    }
     default:
       return state;
   }
 }
 
-export default newP;
+export default users;

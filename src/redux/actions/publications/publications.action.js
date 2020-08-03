@@ -32,13 +32,13 @@ export const fetchPubsReset = () => {
   };
 };
 
-// la data es category'
+// la data es state
 const fetchPubs = (data) => {
   const auth = new Auth();
 
   return (dispatch) => {
     dispatch(fetchPubsRequest);
-    Axios.get(`${process.env.REACT_APP_API_URI}api/publications/${data}`, {
+    Axios.get(`${process.env.REACT_APP_API_URI}api/publication/${data}`, {
       headers: {
         Authorization: `Bearer ${auth.token()}`,
       },

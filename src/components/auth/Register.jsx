@@ -1,9 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import fetchRegister from "../../redux/actions/register.action";
-import SignUp from "./forms/SignUpForm";
 import Auth from "../../utils";
+import SignUp from "./forms/SignUpForm";
+import fetchRegister from "../../redux/actions/register.action";
+import { openBackdrop } from "../../redux/ducks/_register.duck";
 
 const initialForm = {
   username: "",
@@ -19,6 +20,9 @@ export default function Register() {
 
   const handleSubmit = (formData) => {
     dispatch(fetchRegister(formData));
+
+    // activamos el backdrop
+    dispatch(openBackdrop(true));
   };
 
   const auth =

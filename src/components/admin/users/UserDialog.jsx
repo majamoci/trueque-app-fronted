@@ -1,33 +1,43 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
+import { useSelector, useDispatch } from "react-redux";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import CallIcon from "@material-ui/icons/Call";
+import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import CloseIcon from "@material-ui/icons/Close";
-import Typography from "@material-ui/core/Typography";
-import { useSelector, useDispatch } from "react-redux";
-import { closeDialog } from "../../../redux/actions/dialog.action";
+import LocationCityIcon from "@material-ui/icons/LocationCity";
+import SettingsCellIcon from "@material-ui/icons/SettingsCell";
+import { makeStyles } from "@material-ui/core/styles";
+import { closeDialog } from "../../../redux/actions/users/dialog.action";
 
+const sizeAvatar = 64;
 const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(2),
+  relative: {
+    width: sizeAvatar,
+    height: sizeAvatar,
+    left: sizeAvatar / 4,
+    bottom: sizeAvatar / 2 + 6,
+    position: "relative",
   },
-  closeButton: {
-    position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
+  imageBox: {
+    maxWidth: 345,
+  },
+  image: {
+    width: "100%",
+  },
+  text: {
+    display: "flex",
+    alignItems: "center",
   },
 }));
 
 export default function UserDialog() {
+  const classes = useStyles();
   const dispatch = useDispatch();
-  // const classes = useStyles();
   const dialogSt = useSelector((state) => state.user.dialog);
-
   const handleClose = () => dispatch(closeDialog(false));
 
   return (
@@ -36,23 +46,36 @@ export default function UserDialog() {
       aria-labelledby="customized-dialog-title"
       open={dialogSt.open}
     >
-      <DialogTitle>Datos del usuario</DialogTitle>
-      <DialogContent dividers>
-        <Typography gutterBottom>
-          {/* Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. */}
+      <div className={classes.imageBox}>
+        <img
+          src="/contemplative-reptile.jpg"
+          alt="Reptile"
+          className={classes.image}
+        />
+        <Avatar
+          src="/contemplative-reptile.jpg "
+          className={classes.relative}
+        />
+      </div>
+
+      <DialogContent>
+        <Typography variant="h5" gutterBottom>
           Rolando Caiza
         </Typography>
-        <Typography gutterBottom>
-          {/* Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor. */}
-          Ciudad: Latacunga
+        <Typography gutterBottom className={classes.text}>
+          <SettingsCellIcon style={{ color: green[500] }} />
+          &nbsp;
+          <span>097 919 6435</span>
         </Typography>
-        <Typography gutterBottom>
-          {/* Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla. */}
-          Teléfono: 097 919 6435
+        <Typography gutterBottom className={classes.text}>
+          <CallIcon style={{ color: green[500] }} />
+          &nbsp;
+          <span>3731700</span>
+        </Typography>
+        <Typography gutterBottom className={classes.text}>
+          <LocationCityIcon style={{ color: green[500] }} />
+          &nbsp;
+          <span>Latacunga</span>
         </Typography>
       </DialogContent>
       <DialogActions>

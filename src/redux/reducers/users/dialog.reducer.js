@@ -1,4 +1,4 @@
-import { DIALOG_OPEN, DIALOG_CLOSE } from "../actions/dialog.action";
+import { DIALOG_OPEN, DIALOG_CLOSE } from "../../actions/users/dialog.action";
 
 const init_state = {
   open: false,
