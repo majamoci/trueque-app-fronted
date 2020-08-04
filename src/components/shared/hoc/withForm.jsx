@@ -29,6 +29,12 @@ export const withForm = (View) =>
       // this.setState(this.props.values);
     };
 
+    //cambiar el estado 
+    handleState = (state) => {
+      this.setState({state});
+
+    }
+
     render() {
       return (
         <View
@@ -37,6 +43,7 @@ export const withForm = (View) =>
           _handleSubmit={this.handleSubmit}
           _handleChange={this.handleChange}
           _handleRemember={this.handleRemember}
+          _handleState={this.handleState}
         />
       );
     }

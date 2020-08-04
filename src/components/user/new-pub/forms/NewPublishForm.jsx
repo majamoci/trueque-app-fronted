@@ -6,15 +6,15 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { DropzoneArea } from "material-ui-dropzone";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { Button } from "@material-ui/core";
 import SwitchButton from "../../shared/SwitchButton";
 import SelectCategory from "../../shared/Select";
 import { withForm } from "../../../shared/hoc/withForm";
 import { useStyles } from "../../shared/styles";
 import { isEmpty } from "../../../../utils";
 import { fetchCreatePubReset } from "../../../../redux/actions/publications/create.action";
+import ButtonConditional from "./buttonConditional";
 
-function NewPublication({ _handleChange, _handleSubmit, values }) {
+function NewPublication({ _handleChange, _handleSubmit, _handleState, values }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const newSt = useSelector((store) => store.publication.newP);
@@ -164,15 +164,10 @@ function NewPublication({ _handleChange, _handleSubmit, values }) {
           />
         </Grid>
       </Grid>
-      <div className={classes.actionsContainer}>
-        <Button
-          variant="contained"
-          type="submit"
-          color="primary"
-          className={classes.button}
-        >
-          guardar como borrador
-        </Button>
+      <div style={{padding: 20}} className={classes.actionsContainer}>
+        <ButtonConditional 
+          onChange={_handleState}
+        />
       </div>
     </form>
   );
@@ -181,6 +176,7 @@ function NewPublication({ _handleChange, _handleSubmit, values }) {
 NewPublication.propTypes = {
   _handleChange: PropTypes.func.isRequired,
   _handleSubmit: PropTypes.func.isRequired,
+  _handleState: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
 };
 
