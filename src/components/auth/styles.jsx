@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage: "url(https://source.unsplash.com/collection/172974)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -13,6 +13,10 @@ export const useStyles = makeStyles((theme) => ({
         : theme.palette.grey[900],
     backgroundSize: "cover",
     backgroundPosition: "center",
+  },
+  imageLogo: {
+    width: "25%",
+
   },
   paper: {
     margin: theme.spacing(8, 4),

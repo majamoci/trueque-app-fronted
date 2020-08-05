@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import fetchCreatePub from "../../../redux/actions/publications/create.action";
 import NewPublication from "./forms/NewPublishForm";
+import StepperVertical from "./forms/StepperVertical"
 import { Container, Grid } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
@@ -31,11 +32,14 @@ export default function NewPub() {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
+          {/* Indicaciones de como hacer una publicación */}  
+          <StepperVertical/>
         </Grid>
         <Grid item xs={12} md={8}>
+          {/* Nueva publicación */}
           <NewPublication style={{padding: 40}} onSubmit={handleSubmit} values={initial_form} />
         </Grid>
       </Grid>

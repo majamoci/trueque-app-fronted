@@ -7,6 +7,7 @@ import otp from "./otp.reducer";
 import drawer from './drawer.reducer';
 import dialog from "./users/dialog.reducer";
 import users from "./users/users.reducer";
+import profile from "./users/profile.reducer";
 import newP from './publications/create.reducer';
 import publications from './publications/publications.reducer';
 import _login from "../ducks/_login.duck";
@@ -26,12 +27,13 @@ const auth = combineReducers({
 
 const user = combineReducers({
   dialog,
-  users
+  users,
+  profile,
 });
 
 const publication = combineReducers({
   newP,
-  publications
+  publications,
 });
 
 const backdrops = combineReducers({
