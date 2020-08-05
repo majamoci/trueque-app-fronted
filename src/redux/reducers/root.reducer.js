@@ -8,6 +8,7 @@ import drawer from './drawer.reducer';
 import dialog from "./users/dialog.reducer";
 import users from "./users/users.reducer";
 import profile from "./users/profile.reducer";
+import mini_profile from "./users/mini_profile.reducer";
 import newP from './publications/create.reducer';
 import publications from './publications/publications.reducer';
 import _login from "../ducks/_login.duck";
@@ -29,6 +30,7 @@ const user = combineReducers({
   dialog,
   users,
   profile,
+  mini_profile,
 });
 
 const publication = combineReducers({

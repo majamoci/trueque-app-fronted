@@ -1,21 +1,24 @@
+// general
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// material ui
 import MaterialTable from "material-table";
 import DetailsIcon from "@material-ui/icons/Details";
-import UserDialog from "./users/UserDialog";
-import { openDialog } from "../../redux/actions/users/dialog.action";
-import fetchUsers from "../../redux/actions/users/users.action";
+// local
 import { isEmpty } from "../../utils";
+import UserDialog from "./users/UserDialog";
 import { columns, localization } from "./utils/table.config";
+import fetchUsers from "../../redux/actions/users/users.action";
+import { openDialog } from "../../redux/actions/users/dialog.action";
 
 export default function Users() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const usersSt = useSelector((store) => store.user.users);
-  const handleOpen = (id) => {
+  const handleOpen = (username) => {
     dispatch(openDialog(true));
-    setUser(id);
+    setUser(username);
   };
 
   const actions = [
@@ -23,7 +26,7 @@ export default function Users() {
       icon: DetailsIcon, //para que el icono, funcione como boton
       tooltip: "Detalle del usuario", //al pasar el mause sobre el icono muestra un mensaje
       onClick: (e, data) => {
-        handleOpen(data.id);
+        handleOpen(data.name);
       },
     },
   ];
