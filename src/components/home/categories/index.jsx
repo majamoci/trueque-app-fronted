@@ -1,13 +1,17 @@
+// general
 import React from "react";
+// local
 import Slides from "./Slides";
+import Title from "./Title";
 
 export default function Categories() {
   return (
     <>
-      <h2>Frutas</h2>
+      <Title title="Frutas" emoji="🍉" />
       <Slides category="FRUT" />
-      <h2>Hortalizas</h2>
+
+      <Title title="Hortalizas" emoji="🥕" />
       <Slides category="HORT" />
     </>
-  )
+  );
 }

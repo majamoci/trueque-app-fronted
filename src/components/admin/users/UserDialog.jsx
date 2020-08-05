@@ -23,8 +23,8 @@ export default function UserDialog({ user }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const dialogSt = useSelector((state) => state.user.dialog);
-  const profileSt = useSelector((state) => state.user.mini_profile.data);
+  const dialogSt = useSelector((store) => store.user.dialog);
+  const profileSt = useSelector((store) => store.user.mini_profile.data);
   const handleClose = () => dispatch(closeDialog(false));
 
   useEffect(() => {
