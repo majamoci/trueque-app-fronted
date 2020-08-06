@@ -117,21 +117,21 @@ export default function ViewPub({ type }) {
 
   useEffect(() => {
     // type: draft|published|complete
-    let state = 'published';
+    let type = 'published';
     switch (type) {
       case "borradores": {
         setCards(borradores);
-        state = 'draft';
+        type = 'draft';
         break;
       }
       case "intercambiados": {
         setCards(intercambiados);
-        state = 'complete';
+        type = 'complete';
         break;
       }
       default: {
         setCards(publicados);
-        state = 'published';
+        type = 'published';
         break;
       }
     }

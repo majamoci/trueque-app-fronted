@@ -59,7 +59,7 @@ function NewPublication({ _handleChange, _handleSubmit, _handleState, values }) 
           <TextField
             required
             fullWidth
-            autoFocus
+            // autoFocus
             variant="outlined"
             margin="normal"
             id="title"

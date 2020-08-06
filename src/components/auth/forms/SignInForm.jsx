@@ -55,6 +55,7 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
+    
             <Avatar className={classes.avatar}></Avatar>
             <Typography component="h1" variant="h5">
               Iniciar sesión
@@ -114,7 +115,13 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
                   </Link>
                 </Grid>
               </Grid>
-              <Box mt={5}>
+              <Box mt={5} align="center"> 
+                <img
+                  src="/rantiLogo.png"
+                  alt="Logo Ranti"
+                  style={{ width: "25%"}}
+  
+                />               
                 <Copyright />
               </Box>
             </form>
