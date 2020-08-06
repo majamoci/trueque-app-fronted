@@ -29,7 +29,7 @@ export default function PubCard({ item }) {
       <CardActionArea onClick={() => alert("Hola")}>
         <CardMedia
           className={classes.media}
-          image={`${process.env.REACT_APP_API_URI}storage/${item.photos[0].path}`}
+          // image={`${process.env.REACT_APP_API_URI}storage/${item.photos[0].path}`}
           title="Contemplative Reptile"
         />
         <CardContent>

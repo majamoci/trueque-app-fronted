@@ -32,7 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   link: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     textDecoration: "none",
   },
   errMsg: {

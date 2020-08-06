@@ -105,12 +105,12 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link to="/reset-password" variant="body2">
+                  <Link to="/reset-password" className={classes.link}>
                     Olvidó su contraseña?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/register" variant="body2">
+                  <Link to="/register" className={classes.link}>
                     No tienes una cuenta? Registrarse
                   </Link>
                 </Grid>

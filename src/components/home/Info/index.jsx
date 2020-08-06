@@ -12,19 +12,19 @@ const classes = useStyles();
 
   return (
     <div className={classes.info}>
-      <img src="logo.png" alt="Ranti Ranti Logo" className={classes.logo} />
+      <img src="rantiLogo.png" alt="Ranti Ranti Logo" className={classes.logo} />
       <p>
         La red de intercambio en la que puedes comprar pagando con tus productos.
       </p>
       <Typography component="h1" variant="h4">
-        Cómo funciona Ranti Ranti.
+        ¿Cómo funciona?
       </Typography>
       <ol>
         <li>Crea tu cuenta</li>
         <li>Busca el producto</li>
-        <li>Intercambialo</li>
+        <li>Truequéalo</li>
       </ol>
-      <Button component={Link} to="/login">
+      <Button className={classes.button} component={Link} to="/login">
         Iniciar Sesión
       </Button>
       <Button component={Link} to="/register">

@@ -13,11 +13,15 @@ export const useStyles = makeStyles(theme => ({
   },
   title: {
     width: "100%",
-    color: "white",
+    color: "#221A1A",
     display: "flex",
     padding: theme.spacing(2),
     justifyContent: "space-between",
     marginBottom: theme.spacing(1),
     backgroundColor: theme.palette.primary.main,
+  },
+  button:{
+    color:"#221A1A",
+    backgroundColor:theme.palette.primary.main,
   }
 }))

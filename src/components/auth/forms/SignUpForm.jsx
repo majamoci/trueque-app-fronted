@@ -122,7 +122,13 @@ function SignUp({ _handleChange, _handleSubmit }) {
             </Grid>
           </form>
         </div>
-        <Box mt={5}>
+        <Box mt={5} align="center">
+          <img
+            src="/rantiLogo.png"
+            alt="Logo Ranti"
+            style={{ width: "25%"}}
+
+          />       
           <Copyright />
         </Box>
       </Container>
