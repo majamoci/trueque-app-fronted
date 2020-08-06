@@ -12,6 +12,15 @@ export default function Categories() {
 
       <Title title="Hortalizas" emoji="🥕" />
       <Slides category="HORT" />
+
+      <Title title="Cereales y derivados" emoji="🌾" />
+      <Slides category="CER" />
+
+      <Title title="Tuberculos y raíces" emoji="🥔" />
+      <Slides category="TUB" />
+
+      <Title title="Legumbres" emoji="🥬" />
+      <Slides category="LEG" />
     </>
   );
 }
