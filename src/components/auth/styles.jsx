@@ -14,10 +14,6 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
-  imageLogo: {
-    width: "25%",
-
-  },
   paper: {
     margin: theme.spacing(8, 4),
     display: "flex",

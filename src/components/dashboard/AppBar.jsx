@@ -46,7 +46,7 @@ export default function DashboardBar() {
           noWrap
           className={classes.title}
         >
-          Dashboard
+          Ranti Ranti
         </Typography>
 
         <IconButton color="inherit">
