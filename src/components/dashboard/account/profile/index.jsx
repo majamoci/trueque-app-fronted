@@ -40,15 +40,15 @@ const AccountProfile = (props) => {
         <CardContent>
           <div className={classes.details}>
             <div>
-              <Typography gutterBottom variant="h2">
-                {profileSt.profile.firstname} 
+              <Typography gutterBottom variant="h3">
+                {profileSt.profile.firstname} {profileSt.profile.lastname} 
               </Typography>
               <Typography
                 className={classes.locationText}
                 color="textSecondary"
                 variant="body1"
               >
-                {/* {user.city}, {user.country} */}
+                {profileSt.profile.city}
               </Typography>
               <Typography
                 className={classes.dateText}
@@ -56,7 +56,9 @@ const AccountProfile = (props) => {
                 variant="body1"
               ></Typography>
             </div>
-            {/* <Avatar className={classes.avatar} src={user.avatar} /> */}
+            <Avatar 
+              className={classes.avatar}
+              src="https://source.unsplash.com/300x300/?face" />
           </div>
           <div className={classes.progress}>
             <Typography variant="body1">Perfil Completado: 70%</Typography>
