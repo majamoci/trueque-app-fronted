@@ -49,20 +49,21 @@ const AccountDetails = (props) => {
 
   if (loading) return <div>Obteniendo información del usuario...</div>;
   
-  const states = [
-    {
-      value: "masculino",
-      label: "Masculino",
-    },
-    {
-      value: "fenemino",
-      label: "Fenemino",
-    },
-    {
-      value: "nodecirlo",
-      label: "Prefiero no decirlo",
-    },
-  ];
+  // const states = [
+  //   {
+  //     value: "masculino",
+  //     label: "Masculino",
+  //   },
+  //   {
+  //     value: "fenemino",
+  //     label: "Fenemino",
+  //   },
+  //   {
+  //     value: "nodecirlo",
+  //     label: "Prefiero no decirlo",
+  //   },
+  // ];
+
   return (
     !isEmpty(profileSt) && (
      <Card {...rest} className={clsx(classes.root, className)}>

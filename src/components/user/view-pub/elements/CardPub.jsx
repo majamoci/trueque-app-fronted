@@ -12,10 +12,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 // local
 import { useStyles } from "../styles";
+import { categories } from "../../shared/categories";
 
 export default function CardPub({ detail }) {
   const classes = useStyles();
-
+  const category = categories.find((item) => item.value === detail.category);
+  
   return (
     <Card>
       <CardActionArea>
@@ -38,7 +40,7 @@ export default function CardPub({ detail }) {
             {detail.price}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {detail.category}
+            {category.label}
           </Typography>
         </CardContent>
       </CardActionArea>

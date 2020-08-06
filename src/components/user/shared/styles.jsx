@@ -18,4 +18,9 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     flex: 1,
   },
+  fab: {
+    position: "fixed",
+    bottom: 20,
+    right: 20,
+  },
 }));

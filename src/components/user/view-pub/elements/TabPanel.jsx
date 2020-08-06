@@ -1,50 +1,30 @@
 // general
-import PropTypes from "prop-types";
+import clsx from "clsx";
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 // material ui
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 // local
 import { isEmpty } from "utils";
 import CardPub from "./CardPub";
 import { useStyles } from "../styles";
-
-const intercambiados = [
-  {
-    img: "https://source.unsplash.com/1600x900/?weekly=water",
-    title: "Titulo-intercambios",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?nature,water",
-    title: "Titulo-intercambioa",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?animals,coffee",
-    title: "Titulo-intercambios",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?comics,heroes",
-    title: "Titulo-intercambios",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-];
+import { Typography } from "@material-ui/core";
 
 export default function TabPanel({ index, ...other }) {
   const classes = useStyles();
   const pubSt = useSelector((store) => store.publication.all);
   const tabValue = useSelector((store) => store.publication._pub_tab);
 
+  // TODO: Encontrar la forma de que se muestre solo una vez
+  const emptyPubs = (
+    <div>
+      <Typography component="p">¡Vaya! Esto está vacío.</Typography>
+      <Typography component="p">
+        ¡Date prisa y empieza a intercambiar!
+      </Typography>
+    </div>
+  );
   const publications =
     !isEmpty(pubSt.data) &&
     pubSt.data.publications.map((item) => {
@@ -64,9 +44,14 @@ export default function TabPanel({ index, ...other }) {
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
     >
+      {/* {tabValue.pos === index && emptyPubs} */}
       {tabValue.pos === index && (
-        <Grid container spacing={2}>
-          {publications}
+        <Grid
+          container
+          spacing={2}
+          className={clsx(isEmpty(publications) && "center")}
+        >
+          {isEmpty(publications) ? emptyPubs : publications}
         </Grid>
       )}
     </div>

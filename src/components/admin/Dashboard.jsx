@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function AdminDashboard() {
-  return <h2>Admin</h2>;
+  return (
+    <div className="center">
+      <img src="/warning.png" alt="En construcción" srcSet="/warning.png" />
+    </div>
+  );
 }

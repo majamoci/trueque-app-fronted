@@ -14,7 +14,8 @@ import Register from "./auth/Register";
 import UserRouter from "./user/UserRouter";
 import { NotFound } from "./shared/ViewError";
 import AdminRouter from "./admin/AdminRouter";
-import { closeBackdrop } from "../redux/ducks/_login.duck";
+import { closeBackdrop as closeBLogin } from "redux/ducks/_login.duck";
+import { closeBackdrop as closeBRegister } from "redux/ducks/_register.duck";
 
 function LoginRequiredRoute({ ...rest }) {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ function LoginRequiredRoute({ ...rest }) {
       {...rest}
       render={(props) => {
         const auth = new Auth();
-        dispatch(closeBackdrop(false));
+        dispatch(closeBLogin(false));
+        dispatch(closeBRegister(false));
         switch (auth.role()) {
           case "U": {
             return <UserRouter />;
