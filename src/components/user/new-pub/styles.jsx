@@ -8,14 +8,17 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
+  },
   resetContainer: {
     padding: theme.spacing(3),
   },
-  appBar: {
-    position: "relative",
+  pubContainer: {
+    padding: 40,
   },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
   },
 }));

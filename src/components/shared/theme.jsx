@@ -16,4 +16,9 @@ export const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ].join(","),
   },
+  palette: {
+    primary: {
+      main: "#CE1A0B",
+    },
+  },
 });

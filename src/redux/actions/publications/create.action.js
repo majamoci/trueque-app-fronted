@@ -40,9 +40,8 @@ const fetchCreatePub = (data) => {
   const new_data = {...rest, ...photos};
 
   for (let key in new_data) {
-    if (["0", "1", "2", "3", "4"].includes(key))
-      formData.append("photos[]", new_data[key]);
-    else formData.append(key, new_data[key]);
+    const k = ["0", "1", "2", "3", "4"].includes(key);
+    formData.append(k ? "photos[]" : key, new_data[key]);
   }
 
   return (dispatch) => {

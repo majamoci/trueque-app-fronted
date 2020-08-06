@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+// general
 import PropTypes from "prop-types";
+import React, { useState } from "react";
+// material ui
 import { TextField, MenuItem } from "@material-ui/core";
+// local
 import { categories } from "./categories";
 
 export default function SelectCategory({ onSelect, error, helperText, value }) {

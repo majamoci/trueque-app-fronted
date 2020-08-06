@@ -16,6 +16,7 @@ import _register from "../ducks/_register.duck";
 import _send_email from "../ducks/_send_email.duck";
 import _verify_otp from "../ducks/_verify_otp.duck";
 import _new_psswd from "../ducks/_new_psswd.duck";
+import _new_pub from "../ducks/_new_pub.duck";
 
 const auth = combineReducers({
   register,
@@ -44,6 +45,7 @@ const backdrops = combineReducers({
   _send_email,
   _verify_otp,
   _new_psswd,
+  _new_pub,
 });
 
 const rootReducer = combineReducers({

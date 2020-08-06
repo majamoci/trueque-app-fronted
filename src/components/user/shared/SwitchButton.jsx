@@ -12,12 +12,12 @@ const useStylesSw = makeStyles((theme) => ({
   switchBase: {
     padding: 2,
     color: theme.palette.grey[100],
+    backgroundColor: theme.palette.primary.main,
     "&$checked": {
       transform: "translateX(106px)",
       color: theme.palette.common.white,
       "& + $track": {
         opacity: 1,
-        backgroundColor: theme.palette.primary.main,
         borderColor: theme.palette.primary.main,
       },
     },
@@ -29,8 +29,8 @@ const useStylesSw = makeStyles((theme) => ({
     borderRadius: 16 / 2,
   },
   track: {
-    borderColor: theme.palette.secondary.main,
-    backgroundColor: theme.palette.secondary.main,
+    borderColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
     borderRadius: 16 / 2,
     opacity: 1,
   },

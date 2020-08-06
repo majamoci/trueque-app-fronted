@@ -1,8 +1,8 @@
 // General imports
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 // Material UI imports
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -34,6 +34,7 @@ function NewPassword({ _handleChange, _handleSubmit, values, msg }) {
 
   useEffect(() => {
     const { errors: response, data } = changeSt;
+
     if (!isEmpty(response)) {
       // desactivamos el backdrop
       dispatch(closeBackdrop(false));
@@ -50,7 +51,7 @@ function NewPassword({ _handleChange, _handleSubmit, values, msg }) {
       const { message } = data;
       setOk(message);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeSt]);
 
   return (
