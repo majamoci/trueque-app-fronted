@@ -1,142 +1,55 @@
-/* eslint-disable no-unused-vars */
+// general
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GridPub from "./elements/GridPub";
-import { useState } from "react";
-import { isEmpty } from "../../../utils";
-// import fetchGetPub from '../../../redux/actions/publications/view.action'
+// material ui
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+// local
+import { useStyles } from "./styles";
+import TabPanel from "./elements/TabPanel";
+import { changeTab } from "../../../redux/ducks/_pub_tab.duck";
+import fetchPubs from "../../../redux/actions/publications/publications.action";
 
-const publicados = [
-  {
-    img: "https://source.unsplash.com/random/1600x900",
-    title: "Titulo-publicados",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/random/1600x900",
-    title: "Titulo-publicados",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/random/1600x900",
-    title: "Titulo-publicados",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/random/1600x900",
-    title: "Titulo-publicados",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-];
-const borradores = [
-  {
-    img: "https://source.unsplash.com/1600x900/?weekly=water",
-    title: "Titulo-borradores",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?nature,water",
-    title: "Titulo-borradores",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?animals,coffee",
-    title: "Titulo-borradores",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?comics,heroes",
-    title: "Titulo-borradores",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-];
-const intercambiados = [
-  {
-    img: "https://source.unsplash.com/1600x900/?weekly=water",
-    title: "Titulo-intercambio",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?nature,water",
-    title: "Titulo-intercambio",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?animals,coffee",
-    title: "Titulo-intercambio",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-  {
-    img: "https://source.unsplash.com/1600x900/?comics,heroes",
-    title: "Titulo-intercambio",
-    price: 12.32,
-    category: "FRUT",
-    button: <button>Click me!</button>,
-  },
-];
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    "aria-controls": `vertical-tabpanel-${index}`,
+  };
+}
 
-export default function ViewPub({ type }) {
+export default function TabActive() {
+  const classes = useStyles();
   const dispatch = useDispatch();
-  // const viewSt = useSelector(store => store.publications._view);
-  const [cards, setCards] = useState([]);
+  const tabValue = useSelector((store) => store.publication._pub_tab);
+  const status = ["published", "draft", "complete"];
 
-  // useEffect(() => {
-  //   const { errors: res, data } = viewSt;
-  //   if (!isEmpty(res)) {
-  //     const err = res.errors;
-  //     // do something
-  //   }
-
-  //   if (!isEmpty(data)) {
-  //     // const { publications } = data;
-  //     // setCards(publications);
-  //   }
-  // }, [viewSt])
+  const handleChange = (event, pos) => {
+    dispatch(changeTab({ pos, status: status[pos] }));
+  };
 
   useEffect(() => {
-    // type: draft|published|complete
-    let type = 'published';
-    switch (type) {
-      case "borradores": {
-        setCards(borradores);
-        type = 'draft';
-        break;
-      }
-      case "intercambiados": {
-        setCards(intercambiados);
-        type = 'complete';
-        break;
-      }
-      default: {
-        setCards(publicados);
-        type = 'published';
-        break;
-      }
-    }
-    // dispatch(fetchGetPub(state));
-  }, [type]);
+    dispatch(fetchPubs(tabValue.status));
+  }, [dispatch, tabValue.status]);
 
-  return <GridPub data={cards} />;
+  return (
+    <div className={classes.root}>
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        textColor="primary"
+        background="primary"
+        value={tabValue.pos}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        className={classes.tabs}
+      >
+        <Tab label="PUBLICADAS" {...a11yProps(0)} />
+        <Tab label="BORRADORES" {...a11yProps(1)} />
+        <Tab label="INTERCAMBIOS" {...a11yProps(2)} />
+      </Tabs>
+      <TabPanel index={0} />
+      <TabPanel index={1} />
+      <TabPanel index={2} />
+    </div>
+  );
 }

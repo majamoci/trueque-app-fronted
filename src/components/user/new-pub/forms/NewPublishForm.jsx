@@ -28,7 +28,7 @@ function NewPublication({
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const newSt = useSelector((store) => store.publication.newP);
+  const newSt = useSelector((store) => store.publication.new);
   const backdropSt = useSelector((state) => state.backdrops._new_pub);
   const [errors, setErrors] = useState({});
 

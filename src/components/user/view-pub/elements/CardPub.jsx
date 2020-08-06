@@ -1,23 +1,17 @@
+// general
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+// material ui
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import DeleteIcon from "@material-ui/icons/Delete";
+import CardMedia from "@material-ui/core/CardMedia";
+import DetailsIcon from "@material-ui/icons/Details";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import DetailsIcon from "@material-ui/icons/Details";
-import DeleteIcon from "@material-ui/icons/Delete";
-
-const useStyles = makeStyles({
-  price: {
-    float: "right",
-  },
-  media: {
-    height: 140,
-  },
-});
+import CardActionArea from "@material-ui/core/CardActionArea";
+// local
+import { useStyles } from "../styles";
 
 export default function CardPub({ detail }) {
   const classes = useStyles();
@@ -27,7 +21,7 @@ export default function CardPub({ detail }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={detail.img}
+          image={`${process.env.REACT_APP_API_URI}storage/${detail.photos[0].path}`}
           title="Contemplative Reptile"
         />
         <CardContent>

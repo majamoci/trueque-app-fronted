@@ -2,7 +2,6 @@ const {
   FETCH_PUBS_REQUEST,
   FETCH_PUBS_SUCCESS,
   FETCH_PUBS_FAILURE,
-  FETCH_PUBS_RESET,
 } = require("../../actions/publications/publications.action");
 
 const initial_state = {
@@ -32,9 +31,6 @@ function publications(state = initial_state, action) {
         data: {},
         errors: action.payload,
       };
-    }
-    case FETCH_PUBS_RESET: {
-      return initial_state;
     }
     default:
       return state;

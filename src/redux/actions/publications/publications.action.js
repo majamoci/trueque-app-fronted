@@ -4,7 +4,6 @@ import Auth from "../../../utils";
 export const FETCH_PUBS_REQUEST = "FETCH_PUBS_REQUEST";
 export const FETCH_PUBS_SUCCESS = "FETCH_PUBS_SUCCESS";
 export const FETCH_PUBS_FAILURE = "FETCH_PUBS_FAILURE";
-export const FETCH_PUBS_RESET = "FETCH_PUBS_RESET";
 
 export const fetchPubsRequest = () => {
   return {
@@ -26,13 +25,7 @@ export const fetchPubsFailure = (error) => {
   };
 };
 
-export const fetchPubsReset = () => {
-  return {
-    type: FETCH_PUBS_RESET,
-  };
-};
-
-// la data es state
+// la data es state:draft|published|complete
 const fetchPubs = (data) => {
   const auth = new Auth();
 

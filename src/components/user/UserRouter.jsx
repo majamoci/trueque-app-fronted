@@ -15,12 +15,6 @@ export default function AdminRouter() {
         <Route exact path={path}>
           <UDashboard />
         </Route>
-        {/* <Route exact path={`${path}/borradores`}>
-          <Borradores />
-        </Route>
-        <Route exact path={`${path}/intercambiados`}>
-          <Intercambios />
-        </Route> */}
         <Route exact path={`${path}/publicaciones`}>
           <Publicaciones />
         </Route>

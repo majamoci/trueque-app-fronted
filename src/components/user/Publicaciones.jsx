@@ -4,7 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import { Link, useRouteMatch } from "react-router-dom";
-import ViewPub from "./view-pub";
+import TabActive from "./view-pub";
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -30,7 +30,7 @@ export default function Publicaciones() {
           <AddIcon />
         </Fab>
 
-        <ViewPub type="borradores" />
+        <TabActive />
       </Container>
     </>
   );
