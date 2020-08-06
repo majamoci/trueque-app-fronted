@@ -1,18 +1,20 @@
+// general
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { closeBackdrop as closeBAdmin } from "../redux/ducks/_login.duck";
-import { closeBackdrop as closeBRegister } from "../redux/ducks/_register.duck";
-import { NotFound } from "./shared/ViewError";
-import AdminRouter from "./admin/AdminRouter";
-import UserRouter from "./user/UserRouter";
-import Register from "./auth/Register";
-import ChangePw from "./auth/ChangePw";
-import ResetPw from "./auth/ResetPw";
+// material ui
+// local
+import Home from "./home";
 import Auth from "../utils";
 import Login from "./auth/Login";
-import Home from "./home";
+import ResetPw from "./auth/ResetPw";
+import ChangePw from "./auth/ChangePw";
+import Register from "./auth/Register";
+import UserRouter from "./user/UserRouter";
+import { NotFound } from "./shared/ViewError";
+import AdminRouter from "./admin/AdminRouter";
+import { closeBackdrop } from "../redux/ducks/_login.duck";
 
 function LoginRequiredRoute({ ...rest }) {
   const dispatch = useDispatch();
@@ -22,13 +24,12 @@ function LoginRequiredRoute({ ...rest }) {
       {...rest}
       render={(props) => {
         const auth = new Auth();
+        dispatch(closeBackdrop(false));
         switch (auth.role()) {
           case "U": {
-            dispatch(closeBRegister(false));
             return <UserRouter />;
           }
           case "A": {
-            dispatch(closeBAdmin(false));
             return <AdminRouter />;
           }
           default: {

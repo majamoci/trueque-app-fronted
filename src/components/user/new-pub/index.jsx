@@ -1,10 +1,16 @@
+// general
 import React from "react";
 import { useDispatch } from "react-redux";
-import fetchCreatePub from "../../../redux/actions/publications/create.action";
-import NewPublication from "./forms/NewPublishForm";
-import StepperVertical from "./forms/StepperVertical"
+// material ui
 import { Container, Grid } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+// local
+import { useStyles } from "./styles";
+import InfoPub from "./forms/InfoPub";
+import NewPublication from "./forms/NewPublishForm";
+import { openBackdrop } from "../../../redux/ducks/_new_pub.duck";
+import fetchCreatePub from "../../../redux/actions/publications/create.action";
+
+// objeto para el formulario
 
 const initial_form = {
   title: "",
@@ -18,29 +24,28 @@ const initial_form = {
 };
 
 export default function NewPub() {
+  const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
 
-  const handleSubmit = (formData) => { 
-    dispatch(fetchCreatePub(formData)) 
+  const handleSubmit = (formData) => {
+    dispatch(fetchCreatePub(formData));
 
-    history.replace({
-      pathname: "./publicaciones",
-    });
-    
-
+    // activamos el backdrop
+    dispatch(openBackdrop(true));
   };
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          {/* Indicaciones de como hacer una publicación */}  
-          <StepperVertical/>
+          <InfoPub />
         </Grid>
         <Grid item xs={12} md={8}>
-          {/* Nueva publicación */}
-          <NewPublication style={{padding: 40}} onSubmit={handleSubmit} values={initial_form} />
+          <NewPublication
+            style={classes.pubContainer}
+            onSubmit={handleSubmit}
+            values={initial_form}
+          />
         </Grid>
       </Grid>
     </Container>
