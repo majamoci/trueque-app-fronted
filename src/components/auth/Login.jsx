@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Auth from "../../utils";
-import SignIn from "./forms/SingInForm";
+import SignIn from "./forms/SignInForm";
 import fetchLogin from "../../redux/actions/auth.action";
 import { openBackdrop } from "../../redux/ducks/_login.duck";
 
