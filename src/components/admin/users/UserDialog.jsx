@@ -7,17 +7,17 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import CallIcon from "@material-ui/icons/Call";
-import { green, red } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
 import SettingsCellIcon from "@material-ui/icons/SettingsCell";
 // local
+import { isEmpty } from 'utils';
 import { useStyles } from "./styles";
-import { isEmpty } from '../../../utils';
-import fetchProfile from "../../../redux/actions/users/mini_profile.action";
-import { closeDialog } from "../../../redux/actions/users/dialog.action";
+import fetchProfile from "redux/actions/users/mini_profile.action";
+import { closeDialog } from "redux/actions/users/dialog.action";
 
 export default function UserDialog({ user }) {
   const classes = useStyles();

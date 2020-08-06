@@ -7,8 +7,8 @@ import Tabs from "@material-ui/core/Tabs";
 // local
 import { useStyles } from "./styles";
 import TabPanel from "./elements/TabPanel";
-import { changeTab } from "../../../redux/ducks/_pub_tab.duck";
-import fetchPubs from "../../../redux/actions/publications/publications.action";
+import { changeTab } from "redux/ducks/_pub_tab.duck";
+import fetchPubs from "redux/actions/publications/publications.action";
 
 function a11yProps(index) {
   return {

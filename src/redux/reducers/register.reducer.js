@@ -1,9 +1,9 @@
-const {
+import {
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
   FETCH_REGISTER_FAILURE,
   FETCH_REGISTER_RESET,
-} = require("../actions/register.action");
+} from "../actions/register.action";
 
 const initial_state = {
   loading: false,

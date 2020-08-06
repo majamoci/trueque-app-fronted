@@ -1,8 +1,8 @@
-// General imports
+// General
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PropTypes from "prop-types";
-// Material UI imports
+// Material UI
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -16,12 +16,12 @@ import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// Local imports
+// Local
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import Copyright from "../../shared/copyright";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_login.duck";
+import Copyright from "components/shared/copyright";
+import { closeBackdrop } from "redux/ducks/_login.duck";
+import { withForm } from "components/shared/hoc/withForm";
 
 function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
   const classes = useStyles();
@@ -42,7 +42,7 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
       setPasswordError(errors && errors.password ? errors.password : null);
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginSt]);
 
   return (
@@ -55,7 +55,6 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
-    
             <Avatar className={classes.avatar}></Avatar>
             <Typography component="h1" variant="h5">
               Iniciar sesión
@@ -115,13 +114,12 @@ function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
                   </Link>
                 </Grid>
               </Grid>
-              <Box mt={5} align="center"> 
+              <Box mt={5} align="center">
                 <img
                   src="/rantiLogo.png"
                   alt="Logo Ranti"
-                  style={{ width: "25%"}}
-  
-                />               
+                  style={{ width: "25%" }}
+                />
                 <Copyright />
               </Box>
             </form>

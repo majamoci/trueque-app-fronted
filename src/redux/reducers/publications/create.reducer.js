@@ -1,9 +1,9 @@
-const {
+import {
   FETCH_CREATE_PUB_REQUEST,
   FETCH_CREATE_PUB_SUCCESS,
   FETCH_CREATE_PUB_FAILURE,
   FETCH_CREATE_PUB_RESET,
-} = require("../../actions/publications/create.action");
+} from "redux/actions/publications/create.action";
 
 const initial_state = {
   loading: false,

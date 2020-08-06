@@ -1,9 +1,9 @@
-// General imports
+// General
 import React, { useState, useEffect } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-// Material UI imports
+// Material UI
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -15,12 +15,12 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// Local imports
+// Local
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import Copyright from "../../shared/copyright";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_register.duck";
+import Copyright from "components/shared/copyright";
+import { withForm } from "components/shared/hoc/withForm";
+import { closeBackdrop } from "redux/ducks/_register.duck";
 
 function SignUp({ _handleChange, _handleSubmit }) {
   const classes = useStyles();

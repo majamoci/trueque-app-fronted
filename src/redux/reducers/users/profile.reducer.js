@@ -1,8 +1,8 @@
-const {
+import {
     FETCH_PROFILES_REQUEST,
     FETCH_PROFILES_SUCCESS,
     FETCH_PROFILES_FAILURE,
-  } = require("../../actions/users/profile.action");
+  } from "redux/actions/users/profile.action";
   
   const initial_state = {
     loading: false,

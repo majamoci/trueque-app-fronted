@@ -12,7 +12,6 @@ export const useStyles = makeStyles(theme => ({
     top: theme.spacing(4)
   },
   title: {
-    width: "100%",
     color: "#221A1A",
     display: "flex",
     padding: theme.spacing(2),
@@ -23,5 +22,9 @@ export const useStyles = makeStyles(theme => ({
   button:{
     color:"#221A1A",
     backgroundColor:theme.palette.primary.main,
+    
+  },
+  slider: {
+    paddingBottom: 15
   }
 }))

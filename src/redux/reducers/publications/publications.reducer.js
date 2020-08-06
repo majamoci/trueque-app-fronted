@@ -1,8 +1,8 @@
-const {
+import {
   FETCH_PUBS_REQUEST,
   FETCH_PUBS_SUCCESS,
   FETCH_PUBS_FAILURE,
-} = require("../../actions/publications/publications.action");
+} from "redux/actions/publications/publications.action";
 
 const initial_state = {
   loading: false,

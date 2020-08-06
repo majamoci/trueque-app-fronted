@@ -13,14 +13,14 @@ export default function Categories() {
       <Title title="Hortalizas" emoji="🥕" />
       <Slides category="HORT" />
 
-      <Title title="Tubérculos" emoji="🥔" />
+      <Title title="Cereales y derivados" emoji="🌾" />
+      <Slides category="CER" />
+
+      <Title title="Tuberculos y raíces" emoji="🥔" />
       <Slides category="TUB" />
 
-      <Title title="Legumbres" emoji="🌿" />
+      <Title title="Legumbres" emoji="🥬" />
       <Slides category="LEG" />
-
-      <Title title="Cereales" emoji="🌾" />
-      <Slides category="CER" />
     </>
   );
 }

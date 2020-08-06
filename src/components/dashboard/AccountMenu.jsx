@@ -1,10 +1,15 @@
+// general
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import { Avatar, Menu, MenuItem } from "@material-ui/core";
-import { fetchAuthReset } from "../../redux/actions/auth.action";
-import { fetchRegisterReset } from "../../redux/actions/register.action";
-import Auth from "../../utils";
+// material UI
+import Menu from "@material-ui/core/Menu";
+import Avatar from "@material-ui/core/Avatar";
+import MenuItem from "@material-ui/core/MenuItem";
+// local
+import Auth from "utils";
+import { fetchAuthReset } from "redux/actions/auth.action";
+import { fetchRegisterReset } from "redux/actions/register.action";
 
 export default function AccountMenu() {
   const history = useHistory();

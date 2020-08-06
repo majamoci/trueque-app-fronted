@@ -1,8 +1,11 @@
-import React from "react";
+
+// geneeal
 import clsx from "clsx";
+import React from "react";
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
+// material UI
 import List from "@material-ui/core/List";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -11,8 +14,9 @@ import IconButton from "@material-ui/core/IconButton";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { closeDrawer } from "../../redux/actions/drawer.action";
+// local
 import { useStyles } from "./styles";
+import { closeDrawer } from "redux/actions/drawer.action";
 
 const Links = ({ items }) => {
   const history = useHistory();

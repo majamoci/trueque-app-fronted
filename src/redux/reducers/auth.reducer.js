@@ -1,9 +1,9 @@
-const {
+import {
   FETCH_AUTH_REQUEST,
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_FAILURE,
   FETCH_AUTH_RESET,
-} = require("../actions/auth.action");
+} from "redux/actions/auth.action";
 
 const initial_state = {
   loading: false,

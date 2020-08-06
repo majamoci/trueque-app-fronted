@@ -5,9 +5,9 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 // local
 import InfoPlatform from "./Info";
-import Categories from "./categories";
 import { useStyles } from "./styles";
 import IndexCarousel from "./carousel/IndexCarousel"
+import Categories from "./categories";
 
 export default function Home() {
   const classes = useStyles();

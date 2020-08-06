@@ -1,14 +1,18 @@
+// general
 import React from "react";
 import PropTypes from "prop-types";
+// material UI
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { Container, Button } from "@material-ui/core";
 import { DropzoneArea } from "material-ui-dropzone";
-import SwitchButton from "../../shared/SwitchButton";
-import { withForm } from "../../../shared/hoc/withForm";
-import SelectCategory from "../../shared/Select";
+import Container from "@material-ui/core/Container";
+import InputAdornment from "@material-ui/core/InputAdornment";
+// local
 import { useStyles } from "../../shared/styles";
+import SelectCategory from "../../shared/Select";
+import SwitchButton from "../../shared/SwitchButton";
+import { withForm } from "components/shared/hoc/withForm";
 
 function EditPublication({ _handleChange, _handleSubmit, onNext, values }) {
   const classes = useStyles();

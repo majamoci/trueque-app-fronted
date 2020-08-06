@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import PubCard from "./Card";
+import { useStyles } from "../styles";
 
 export default function Slides({ category }) {
+  const classes = useStyles();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,13 +24,15 @@ export default function Slides({ category }) {
   if (loading) return <div>Obteniendo información...</div>;
 
   return (
-    <Grid container spacing={2}>
-      {data &&
-        data.map((item) => (
-          <Grid item key={item.pub_id} xs={12} sm={3}>
-            <PubCard item={item}></PubCard>
-          </Grid>
-        ))}
-    </Grid>
+    <div className={classes.slider}>
+      <Grid container spacing={2}>
+        {data &&
+          data.map((item) => (
+            <Grid item key={item.pub_id} xs={12} sm={3}>
+              <PubCard item={item}></PubCard>
+            </Grid>
+          ))}
+      </Grid>
+    </div>
   );
 }

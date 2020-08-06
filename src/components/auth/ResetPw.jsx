@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Auth from "../../utils";
+import Auth from "utils";
 import ResetPassword from "./forms/ResetPasswordForm";
-import fetchReset from "../../redux/actions/send-pw.action";
-import { openBackdrop } from "../../redux/ducks/_send_email.duck";
+import fetchReset from "redux/actions/send-pw.action";
+import { openBackdrop } from "redux/ducks/_send_email.duck";
 
 const initialForm = {
   reset_email: "",
