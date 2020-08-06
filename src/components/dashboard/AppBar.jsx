@@ -1,16 +1,19 @@
-import React from "react";
+// general
 import clsx from "clsx";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+// material UI
+import Badge from "@material-ui/core/Badge";
 import AppBar from "@material-ui/core/AppBar";
+import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Badge from "@material-ui/core/Badge";
-import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { openDrawer } from "../../redux/actions/drawer.action";
-import AccountMenu from "./AccountMenu";
+// local
 import { useStyles } from "./styles";
+import AccountMenu from "./AccountMenu";
+import { openDrawer } from "redux/actions/drawer.action";
 
 export default function DashboardBar() {
   const classes = useStyles();

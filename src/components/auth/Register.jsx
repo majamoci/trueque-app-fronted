@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Auth from "../../utils";
+import Auth from "utils";
 import SignUp from "./forms/SignUpForm";
-import fetchRegister from "../../redux/actions/register.action";
-import { openBackdrop } from "../../redux/ducks/_register.duck";
+import fetchRegister from "redux/actions/register.action";
+import { openBackdrop } from "redux/ducks/_register.duck";
 
 const initialForm = {
   username: "",

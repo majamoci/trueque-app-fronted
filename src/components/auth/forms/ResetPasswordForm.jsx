@@ -1,7 +1,7 @@
 // General imports
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 // Material UI imports
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
@@ -17,11 +17,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // Local imports
 import Otp from "../Otp";
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import Copyright from "../../shared/copyright";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_send_email.duck";
+import Copyright from "components/shared/copyright";
+import { withForm } from "components/shared/hoc/withForm";
+import { closeBackdrop } from "redux/ducks/_send_email.duck";
 
 function ResetPassword({ _handleChange, _handleSubmit }) {
   const classes = useStyles();

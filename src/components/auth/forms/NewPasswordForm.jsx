@@ -16,11 +16,11 @@ import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // Local imports
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import Copyright from "../../shared/copyright";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_new_psswd.duck";
+import Copyright from "components/shared/copyright";
+import { withForm } from "components/shared/hoc/withForm";
+import { closeBackdrop } from "redux/ducks/_new_psswd.duck";
 
 function NewPassword({ _handleChange, _handleSubmit, values, msg }) {
   const classes = useStyles();

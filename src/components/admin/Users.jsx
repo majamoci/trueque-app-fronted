@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import MaterialTable from "material-table";
 import DetailsIcon from "@material-ui/icons/Details";
 // local
-import { isEmpty } from "../../utils";
+import { isEmpty } from "utils";
 import UserDialog from "./users/UserDialog";
+import fetchUsers from "redux/actions/users/users.action";
 import { columns, localization } from "./utils/table.config";
-import fetchUsers from "../../redux/actions/users/users.action";
-import { openDialog } from "../../redux/actions/users/dialog.action";
+import { openDialog } from "redux/actions/users/dialog.action";
 
 export default function Users() {
   const dispatch = useDispatch();

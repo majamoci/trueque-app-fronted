@@ -12,12 +12,12 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // local
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../../utils";
+import { isEmpty } from "utils";
 import SelectCategory from "../../shared/Select";
 import ButtonConditional from "./buttonConditional";
 import SwitchButton from "../../shared/SwitchButton";
-import { withForm } from "../../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../../redux/ducks/_new_pub.duck";
+import { withForm } from "components/shared/hoc/withForm";
+import { closeBackdrop } from "redux/ducks/_new_pub.duck";
 
 function NewPublication({
   _handleChange,

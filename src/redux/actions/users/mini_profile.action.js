@@ -1,5 +1,5 @@
 import Axios from "axios";
-import Auth from "../../../utils";
+import Auth from "utils";
 
 export const FETCH_PROFILE_REQUEST = "FETCH_PROFILE_REQUEST";
 export const FETCH_PROFILE_SUCCESS = "FETCH_PROFILE_SUCCESS";

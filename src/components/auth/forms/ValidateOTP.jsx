@@ -1,9 +1,9 @@
-// General imports
+// General
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
-// Material UI imports
+// Material UI
 import Dialog from "@material-ui/core/Dialog";
 import Button from "@material-ui/core/Button";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -12,11 +12,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import DialogContentText from "@material-ui/core/DialogContentText";
-// Local imports
+// Local
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_verify_otp.duck";
+import { withForm } from "components/shared/hoc/withForm";
+import { closeBackdrop } from "redux/ducks/_verify_otp.duck";
 
 function ValidateOTP({ _handleChange, _handleSubmit, open: openState }) {
   const history = useHistory();

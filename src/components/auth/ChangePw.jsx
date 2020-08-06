@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // local
-import { isEmpty } from "../../utils";
+import { isEmpty } from "utils";
 import NewPassword from "./forms/NewPasswordForm";
-import { fetchOtpReset } from "../../redux/actions/otp.action";
-import fetchChange from "../../redux/actions/change-pw.action";
-import { openBackdrop } from "../../redux/ducks/_new_psswd.duck";
-import { fetchResetBlank } from "../../redux/actions/send-pw.action";
+import { fetchOtpReset } from "redux/actions/otp.action";
+import fetchChange from "redux/actions/change-pw.action";
+import { openBackdrop } from "redux/ducks/_new_psswd.duck";
+import { fetchResetBlank } from "redux/actions/send-pw.action";
 
 const initialForm = {
   reset_password: "",

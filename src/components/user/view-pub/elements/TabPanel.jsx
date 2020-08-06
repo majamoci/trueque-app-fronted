@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 // material ui
 import { Grid } from "@material-ui/core";
 // local
+import { isEmpty } from "utils";
 import CardPub from "./CardPub";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../../utils";
 
 const intercambiados = [
   {

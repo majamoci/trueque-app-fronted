@@ -1,4 +1,4 @@
-const { makeStyles } = require("@material-ui/core");
+import { makeStyles } from "@material-ui/core";
 
 const sizeAvatar = 64;
 export const useStyles = makeStyles((theme) => ({

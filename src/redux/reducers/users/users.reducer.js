@@ -1,8 +1,8 @@
-const {
+import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
-} = require("../../actions/users/users.action");
+} from "redux/actions/users/users.action";
 
 const initial_state = {
   loading: false,

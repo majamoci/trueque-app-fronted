@@ -2,13 +2,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 // material ui
-import { Container, Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 // local
 import { useStyles } from "./styles";
 import InfoPub from "./forms/InfoPub";
 import NewPublication from "./forms/NewPublishForm";
-import { openBackdrop } from "../../../redux/ducks/_new_pub.duck";
-import fetchCreatePub from "../../../redux/actions/publications/create.action";
+import { openBackdrop } from "redux/ducks/_new_pub.duck";
+import fetchCreatePub from "redux/actions/publications/create.action";
 
 // objeto para el formulario
 

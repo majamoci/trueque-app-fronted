@@ -1,20 +1,21 @@
+// general
+import clsx from "clsx";
 import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import clsx from "clsx";
+// material UI
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+// local
+import { isEmpty } from "utils";
 import PropTypes from "prop-types";
-import fetchProfiles from "../../../../redux/actions/users/profile.action"
-import { isEmpty } from "../../../../utils";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Divider,
-  Grid,
-  Button,
-  TextField,
-} from "@material-ui/core";
 import { useStyles } from "../styles";
+import fetchProfiles from "redux/actions/users/profile.action"
 
 const AccountDetails = (props) => {
   const { className, ...rest } = props;

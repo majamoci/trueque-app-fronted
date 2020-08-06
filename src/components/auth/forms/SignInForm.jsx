@@ -1,8 +1,8 @@
-// General imports
+// General
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PropTypes from "prop-types";
-// Material UI imports
+// Material UI
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -16,12 +16,12 @@ import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// Local imports
+// Local
+import { isEmpty } from "utils";
 import { useStyles } from "../styles";
-import { isEmpty } from "../../../utils";
-import Copyright from "../../shared/copyright";
-import { withForm } from "../../shared/hoc/withForm";
-import { closeBackdrop } from "../../../redux/ducks/_login.duck";
+import Copyright from "components/shared/copyright";
+import { closeBackdrop } from "redux/ducks/_login.duck";
+import { withForm } from "components/shared/hoc/withForm";
 
 function SignIn({ _handleChange, _handleRemember, _handleSubmit }) {
   const classes = useStyles();

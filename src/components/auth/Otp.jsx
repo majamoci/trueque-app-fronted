@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import ValidateOTP from "./forms/ValidateOTP";
-import fetchOtp from "../../redux/actions/otp.action";
-import { openBackdrop } from "../../redux/ducks/_verify_otp.duck";
+import fetchOtp from "redux/actions/otp.action";
+import { openBackdrop } from "redux/ducks/_verify_otp.duck";
 
 const initialForm = {
   verify_otp: "",
