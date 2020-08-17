@@ -23,6 +23,7 @@ import Copyright from "components/shared/copyright";
 import { withForm } from "components/shared/hoc/withForm";
 import { closeBackdrop } from "redux/ducks/_send_email.duck";
 
+
 function ResetPassword({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
   const dispatch = useDispatch();
