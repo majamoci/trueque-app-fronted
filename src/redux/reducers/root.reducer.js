@@ -22,6 +22,9 @@ import _register from "../ducks/_register.duck";
 import _new_psswd from "../ducks/_new_psswd.duck";
 import _send_email from "../ducks/_send_email.duck";
 import _verify_otp from "../ducks/_verify_otp.duck";
+//locations
+import location from "./locations/location.reducer";
+import new_location from "./locations/create.reducer";
 
 const auth = combineReducers({
   register,
@@ -37,7 +40,13 @@ const user = combineReducers({
   users,
   profile,
   mini_profile,
+  
 });
+
+const loc = combineReducers({
+  location,
+  new_location
+})
 
 const publication = combineReducers({
   new: new_pub,
@@ -59,6 +68,7 @@ const rootReducer = combineReducers({
   user,
   publication,
   backdrops,
+  loc
 });
 
 export default rootReducer;

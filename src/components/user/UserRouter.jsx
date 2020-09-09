@@ -6,7 +6,7 @@ import Publicaciones from "./Publicaciones";
 import Account from "../dashboard/account";
 import NewPub from "./new-pub";
 import UserMenu from "./Actions";
-import Account from "../Account/index";
+
 
 export default function AdminRouter() {
   const { path } = useRouteMatch();
@@ -23,12 +23,6 @@ export default function AdminRouter() {
           <NewPub />
         </Route>
         <Route exact path={`${path}/account`}>
-          <Account />
-        </Route>
-        <Route exact path={`${path}/Account`}>
-          <Account />
-        </Route>
-        <Route exact path={`${path}/Account`}>
           <Account />
         </Route>
         <Route path="*">
