@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 // material ui
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 // local
 import { isEmpty } from "utils";
 import CardPub from "./CardPub";
 import { useStyles } from "../styles";
-import { Typography } from "@material-ui/core";
 
 export default function TabPanel({ index, ...other }) {
   const classes = useStyles();
@@ -27,13 +27,11 @@ export default function TabPanel({ index, ...other }) {
   );
   const publications =
     !isEmpty(pubSt.data) &&
-    pubSt.data.publications.map((item) => {
-      return (
-        <Grid key={item.id} item xs={12} md={3}>
-          <CardPub detail={item} />
-        </Grid>
-      );
-    });
+    pubSt.data.pubs.map((pub) => (
+      <Grid key={pub.id} item xs={12} md={3}>
+        <CardPub pub={pub} />
+      </Grid>
+    ));
 
   return (
     <div

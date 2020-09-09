@@ -2,6 +2,17 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    display: "flex",
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
+  media: {
+    height: 140,
+  },
+  w100: {
     width: "100%",
   },
   button: {
@@ -20,5 +31,12 @@ export const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: "#fff",
+  },
+  list: {
+    width: "100%",
+    maxWidth: 360,
+    maxHeight: 216,
+    overflow: "auto",
+    backgroundColor: theme.palette.background.paper,
   },
 }));

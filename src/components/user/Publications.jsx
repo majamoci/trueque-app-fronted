@@ -3,11 +3,10 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Container from "@material-ui/core/Container";
 import { Link, useRouteMatch } from "react-router-dom";
-import TabActive from "./view-pub";
+import ViewPublications from "./publications/view";
 import { useStyles } from "./shared/styles";
 
-
-export default function Publicaciones() {
+export default function Publications() {
   const { path } = useRouteMatch();
   const classes = useStyles();
 
@@ -23,7 +22,7 @@ export default function Publicaciones() {
           <AddIcon />
         </Fab>
 
-        <TabActive />
+        <ViewPublications />
       </Container>
     </>
   );
