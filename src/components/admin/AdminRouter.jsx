@@ -5,6 +5,7 @@ import AdminDashboard from "./Dashboard";
 import AdminMenu from "./Actions";
 import Account from "../dashboard/account";
 import Users from "./Users";
+import Map from "./Map/MapIndex";
 
 export default function AdminRouter() {
   const { path } = useRouteMatch();
@@ -19,6 +20,9 @@ export default function AdminRouter() {
         </Route>
         <Route exact path={`${path}/account`}>
           <Account />
+        </Route>
+        <Route exact path={`${path}/map`}>
+          <Map />
         </Route>
         <Route path="*">
           <Redirect to={path} />

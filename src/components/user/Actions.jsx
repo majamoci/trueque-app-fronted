@@ -37,4 +37,3 @@ const menu = [
 export default function UserMenu() {
   return <DrawerTemplate list={menu} />;
 }
-
