@@ -1,9 +1,20 @@
+// general
 import React from "react";
+// material ui
+import  Container  from "@material-ui/core/Container";
+import  Grid  from "@material-ui/core/Grid";
+// local
+import ViewOffers from "./dashboard/ViewOffers";
 
 export default function UDashboard() {
   return (
-    <div className="center">
-      <img src="/warning.png" alt="En construcción" srcSet="/warning.png" />
-    </div>
+    <Container maxWidth="lg">
+      <Grid container spacing={2}>
+        {/* Ver ofertas */}
+        <Grid item xs={12} md={4}>
+          <ViewOffers />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }

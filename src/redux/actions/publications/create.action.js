@@ -36,13 +36,14 @@ export const fetchCreatePubReset = () => {
 const fetchCreatePub = (data) => {
   let formData = new FormData();
   const auth = new Auth();
-  const {photos, ...rest} = data;
-  const new_data = {...rest, ...photos};
+  const { photos, ...rest } = data;
+  const new_data = { ...rest, ...photos };
 
   for (let key in new_data) {
     const k = ["0", "1", "2", "3", "4"].includes(key);
     formData.append(k ? "photos[]" : key, new_data[key]);
   }
+  formData.append('user_id', 4);
 
   return (dispatch) => {
     dispatch(fetchCreatePubRequest);

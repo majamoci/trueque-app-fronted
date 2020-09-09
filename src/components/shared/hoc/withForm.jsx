@@ -19,6 +19,16 @@ export const withForm = (View) =>
       this.setState({ [value]: checked });
     };
 
+    // cambiar el product_id
+    handleProductId = (product_id) => {
+      this.setState({ product_id });
+    };
+
+    // cambiar el estado
+    handleState = (status) => {
+      this.setState({ status });
+    };
+
     handleSubmit = (e) => {
       e.preventDefault();
 
@@ -29,12 +39,6 @@ export const withForm = (View) =>
       // this.setState(this.props.values);
     };
 
-    //cambiar el estado 
-    handleState = (state) => {
-      this.setState({state});
-
-    }
-
     render() {
       return (
         <View
@@ -44,6 +48,7 @@ export const withForm = (View) =>
           _handleChange={this.handleChange}
           _handleRemember={this.handleRemember}
           _handleState={this.handleState}
+          _handleProductId={this.handleProductId}
         />
       );
     }

@@ -62,6 +62,7 @@ export default function MainRouter() {
       <Route path="/change-password" component={ChangePw} />
       <LoginRequiredRoute path="/admin" />;
       <Route path="*" component={NotFound} />
+      
     </Switch>
   );
 }

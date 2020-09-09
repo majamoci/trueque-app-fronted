@@ -49,13 +49,13 @@ export default function SwitchButton({ title, value, onChange }) {
   const classes = useStyles();
   const [option, setOption] = useState({
     value,
-    title: "Solo Uno",
+    title: "Uno",
     checked: false,
   });
 
   const handleChange = (e) => {
     const { name, checked } = e.target;
-    const title = checked ? "Varios" : "Solo uno";
+    const title = checked ? "Varios" : "Uno";
     const value = checked ? "multiple" : "one";
 
     setOption({ title, value, checked });

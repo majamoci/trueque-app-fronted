@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 // local
-import { useStyles } from "./styles";
-import TabPanel from "./elements/TabPanel";
+import { useStyles } from "../styles";
+import TabPanel from "./TabPanel";
 import { changeTab } from "redux/ducks/_pub_tab.duck";
 import fetchPubs from "redux/actions/publications/publications.action";
 
@@ -17,7 +17,7 @@ function a11yProps(index) {
   };
 }
 
-export default function TabActive() {
+export default function ViewPublications() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const tabValue = useSelector((store) => store.publication._pub_tab);
