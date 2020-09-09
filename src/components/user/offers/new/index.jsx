@@ -31,7 +31,10 @@ export default function NewOffer() {
     createOffer(formData)
       .then((data) => {
         dispatch(closeBackdrop(false));
-        history.goBack();
+        console.log(data);
+        history.replace({
+          pathname: `admin/intercambio/from-offer/${data.offer_id}`,
+        });
       })
       .catch((e) => {
         console.error(e);

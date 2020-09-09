@@ -11,6 +11,8 @@ import NewPub from "./publications/new";
 import EditPub from "./publications/edit";
 import UserMenu from "./Actions";
 import Offers from "./Offers";
+import NewOffer from "./offers/new";
+import FromOffer from "./offers/from-offer";
 
 export default function AdminRouter() {
   const { path } = useRouteMatch();
@@ -42,10 +44,13 @@ export default function AdminRouter() {
           <Offers />
         </Route>
         <Route exact path={`${path}/ofertas/nueva`}>
-          <NewPub />
+          <NewOffer />
         </Route>
         <Route exact path={`${path}/ofertas/:id`}>
           <EditPub />
+        </Route>
+        <Route exact path={`${path}/intercambio/from-offer/:id`}>
+          <FromOffer />
         </Route>
         <Route exact path={`${path}/account`}>
           <Account />
