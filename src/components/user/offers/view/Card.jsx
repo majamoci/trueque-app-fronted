@@ -11,7 +11,7 @@ import { categories } from "components/user/shared/categories";
 export default function ProductCard({ item }) {
   const history = useHistory();
   const { path } = useRouteMatch();
-  const { id, name, category, price } = item;
+  // const { id, name, category, price } = item;
 
   const transformCat = (category) => {
     const cat = categories.find((item) => item.value === category);
@@ -26,15 +26,16 @@ export default function ProductCard({ item }) {
     <Card>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
-          {transformCat(category)}
+          {/* {transformCat(category)} */} CATEGORIA
         </Typography>
         <Typography variant="h5" component="h2">
-          {name}
+          {/* {name} */}
         </Typography>
-        <Typography color="textSecondary">$ {price}</Typography>
+        {/* <Typography color="textSecondary">$ {price}</Typography> */} $10
       </CardContent>
       <CardActions>
-        <IconButton aria-label="edit" onClick={() => handleEdit(id)}>
+        {/* <IconButton aria-label="edit" onClick={() => handleEdit(id)}> */}
+        <IconButton aria-label="edit">
           <EditIcon />
         </IconButton>
       </CardActions>
