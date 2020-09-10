@@ -10,13 +10,14 @@ export default function Slides({ category }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API_URI}api/publications/${category}`;
+    const url = `${process.env.REACT_APP_API_URI}api/publications/category/${category}`;
 
     Axios.get(url)
       .then((response) => response.data)
       .then((data) => {
-        setData(data.publications)
+        setData(data.pubs)
         setLoading(false);
+        console.log(data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

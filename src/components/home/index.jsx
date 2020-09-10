@@ -7,7 +7,7 @@ import Container from "@material-ui/core/Container";
 import InfoPlatform from "./Info";
 import { useStyles } from "./styles";
 import IndexCarousel from "./carousel/IndexCarousel";
-// import Categories from "./categories";
+import Categories from "./categories";
 
 export default function Home() {
   const classes = useStyles();
@@ -23,7 +23,7 @@ export default function Home() {
         <Grid item xs={12} sm={9}>
           <IndexCarousel slides={slides} />
           <br />
-          {/* <Categories /> */}
+          <Categories />
         </Grid>
       </Grid>
     </Container>
