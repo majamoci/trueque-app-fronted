@@ -22,6 +22,13 @@ import _register from "../ducks/_register.duck";
 import _new_psswd from "../ducks/_new_psswd.duck";
 import _send_email from "../ducks/_send_email.duck";
 import _verify_otp from "../ducks/_verify_otp.duck";
+//sipa
+import register_sp from './sipa/register-market-type.reducer';
+import register_unit_measure from './sipa/register-unit-measures.reducer';
+import fetchRegisterCategory from './sipa/register-category.reducer';
+import register_sector from './sipa/register-market-sector.reducer';
+import register_system_product from './sipa/register-system-product.reducer';
+
 
 const auth = combineReducers({
   register,
@@ -54,11 +61,22 @@ const backdrops = combineReducers({
   _new_pub,
 });
 
+const sipa = combineReducers({
+  register_sp,
+  register_unit_measure,
+  fetchRegisterCategory,
+  register_sector,
+  register_system_product,
+});
+
 const rootReducer = combineReducers({
   auth,
   user,
   publication,
   backdrops,
+  sipa,
 });
+
+
 
 export default rootReducer;

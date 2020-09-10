@@ -24,6 +24,9 @@ export default function AdminRouter() {
         <Route exact path={`${path}/account`}>
           <Account />
         </Route>
+
+        {/* Creo una nueva ruta aqui */}
+
         <Route path="*">
           <Redirect to={path} />
         </Route>
