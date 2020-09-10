@@ -13,11 +13,13 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 // local
 import { isEmpty } from "utils";
+import Auth from "utils";
 import PropTypes from "prop-types";
 import { useStyles } from "../styles";
 import fetchProfiles from "redux/actions/users/profile.action"
 
 const AccountDetails = (props) => {
+  const auth = new Auth();
   const { className, ...rest } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -42,7 +44,7 @@ const AccountDetails = (props) => {
 
   useEffect(() => {
     //TODO Guardar datos del usuario en memoria
-    dispatch(fetchProfiles("joselito"));
+    dispatch(fetchProfiles(auth.getUserName()));
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

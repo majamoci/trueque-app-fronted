@@ -20,6 +20,11 @@ const menu = [
     text: "Cuenta",
     link: "/account",
   },
+  {
+    icon: <AccountBoxIcon />,
+    text: "Mapas",
+    link: "/map",
+  },
 ];
 
 export default function AdminMenu() {

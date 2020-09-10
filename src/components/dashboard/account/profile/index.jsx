@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "utils";
+import Auth from "utils";
 import fetchProfiles from "redux/actions/users/profile.action"
 
 import {
@@ -19,6 +20,7 @@ import {
 import { useStyles } from "../styles";
 
 const AccountProfile = (props) => {
+  const auth = new Auth();
   const { className, ...rest } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const AccountProfile = (props) => {
 
   useEffect(() => {
     //TODO Guardar datos del usuario en memoria
-    dispatch(fetchProfiles("joselito"));
+    dispatch(fetchProfiles(auth.getUserName()));
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
