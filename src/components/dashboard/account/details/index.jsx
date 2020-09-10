@@ -1,6 +1,6 @@
 // general
 import clsx from "clsx";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // material UI
 import Card from "@material-ui/core/Card";
@@ -16,7 +16,7 @@ import { isEmpty } from "utils";
 import Auth from "utils";
 import PropTypes from "prop-types";
 import { useStyles } from "../styles";
-import fetchProfiles from "redux/actions/users/profile.action"
+import fetchProfiles from "redux/actions/users/profile.action";
 
 const AccountDetails = (props) => {
   const auth = new Auth();
@@ -26,31 +26,31 @@ const AccountDetails = (props) => {
   const [loading, setLoading] = useState(true);
   const profileSt = useSelector((store) => store.user.profile.data);
   const [values, setValues] = useState({
-    firstName: "Joselito",
-    lastName: "Morales",
-    email: "joselito@gmail.com",
-    phone: "0996588664",
-    state: "Huambaló",
-    country: "Tungurahua",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    state: "",
+    country: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    console.log(name, value);
+    // setValues({
+    //   ...values,
+    //   [name]: value,
+    // });
   };
 
   useEffect(() => {
-    //TODO Guardar datos del usuario en memoria
-    dispatch(fetchProfiles(auth.getUserName()));
+    dispatch(fetchProfiles());
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) return <div>Obteniendo información del usuario...</div>;
-  
+
   // const states = [
   //   {
   //     value: "masculino",
@@ -68,7 +68,7 @@ const AccountDetails = (props) => {
 
   return (
     !isEmpty(profileSt) && (
-     <Card {...rest} className={clsx(classes.root, className)}>
+      <Card {...rest} className={clsx(classes.root, className)}>
         <form autoComplete="off" noValidate>
           <CardHeader
             subheader="Esta información puede ser editada"
@@ -95,7 +95,7 @@ const AccountDetails = (props) => {
                   label="Correo"
                   margin="dense"
                   name="email"
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   required
                   value={profileSt.profile.email}
                   variant="outlined"
@@ -135,8 +135,7 @@ const AccountDetails = (props) => {
                   required
                   value={profileSt.profile.city}
                   variant="outlined"
-                >
-                </TextField>
+                ></TextField>
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField

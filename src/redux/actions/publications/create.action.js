@@ -43,7 +43,7 @@ const fetchCreatePub = (data) => {
     const k = ["0", "1", "2", "3", "4"].includes(key);
     formData.append(k ? "photos[]" : key, new_data[key]);
   }
-  formData.append('user_id', 4);
+  formData.append('user_id', auth.getUserId());
 
   return (dispatch) => {
     dispatch(fetchCreatePubRequest);

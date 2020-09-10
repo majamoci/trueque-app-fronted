@@ -34,7 +34,7 @@ export const createOffer = async (data) => {
     const k = ["0", "1", "2", "3", "4"].includes(key);
     formData.append(k ? "photos[]" : key, new_data[key]);
   }
-  formData.append('user_id', 4);
+  formData.append('user_id', auth.getUserId());
 
   const res = await Axios.post(
     `${process.env.REACT_APP_API_URI}api/offers`, formData, {
@@ -49,6 +49,17 @@ export const createOffer = async (data) => {
 export const deleteOffers = async (id) => {
   const res = await Axios.delete(
     `${process.env.REACT_APP_API_URI}api/offers/${id}`, {
+    headers: {
+      Authorization: `Bearer ${auth.token()}`,
+    },
+  });
+
+  return res.data;
+};
+
+export const changeStatus = async (data) => {
+  const res = await Axios.post(
+    `${process.env.REACT_APP_API_URI}api/transaction`, data, {
     headers: {
       Authorization: `Bearer ${auth.token()}`,
     },

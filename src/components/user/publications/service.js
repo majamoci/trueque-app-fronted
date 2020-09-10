@@ -22,7 +22,7 @@ export const createPublication = async (data) => {
     const k = ["0", "1", "2", "3", "4"].includes(key);
     formData.append(k ? "photos[]" : key, new_data[key]);
   }
-  formData.append('user_id', 4);
+  formData.append('user_id', auth.getUserId());
 
   const res = await Axios.post(`${process.env.REACT_APP_API_URI}api/publication`, formData, {
     headers: {
@@ -34,7 +34,7 @@ export const createPublication = async (data) => {
 };
 
 export const updatePublication = async (data, id) => {
-  let new_data = { 'user_id': 4, ...data }
+  let new_data = { 'user_id': auth.getUserId(), ...data }
 
   const res = await Axios.post(`${process.env.REACT_APP_API_URI}api/publication/update/${id}`, new_data, {
     headers: {

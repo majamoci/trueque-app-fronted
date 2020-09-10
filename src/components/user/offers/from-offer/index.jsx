@@ -1,4 +1,4 @@
-import React, { useState, useEffect}from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Typography, Grid } from "@material-ui/core";
 import OfferCard from "./OfferCard";
@@ -7,7 +7,9 @@ import Map from "./../../../admin/Map/components/Map";
 
 export default function FromOffer() {
   const { id } = useParams();
-  const [lat, setLat] = useState('-1.3921655');
+  // eslint-disable-next-line no-unused-vars
+  const [lat, setLat] = useState("-1.3921655");
+  // eslint-disable-next-line no-unused-vars
   const [lng, setLng] = useState("-78.5390282");
 
   return (
@@ -24,18 +26,18 @@ export default function FromOffer() {
         </Grid>
         <Grid item xs={12} md={8}>
           Mapa de Productos
-          <Grid container >
+          <Grid container>
             <Grid item xs={12}>
-                <Map
-                    height="43vh"
-                    width="100%"
-                    center={[lat, lng]}
-                    tileLayer={'map'} //dark,map
-                    zoom={15}
-                    apiKey="5XTmyrjnjZH3NCCR4VY5GDHGRh2GstoA"
-                />
+              <Map
+                height="43vh"
+                width="100%"
+                center={[lat, lng]}
+                tileLayer={"map"} //dark,map
+                zoom={15}
+                apiKey="5XTmyrjnjZH3NCCR4VY5GDHGRh2GstoA"
+              />
             </Grid>
-         </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

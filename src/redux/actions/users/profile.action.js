@@ -25,12 +25,12 @@ export const fetchProfilesFailure = (error) => {
   };
 };
 
-const fetchProfiles = (data) => {
+const fetchProfiles = () => {
   const auth = new Auth();
 
   return (dispatch) => {
     dispatch(fetchProfilesRequest);
-    Axios.get(`${process.env.REACT_APP_API_URI}api/profile/${data}`, {
+    Axios.get(`${process.env.REACT_APP_API_URI}api/profile/${auth.getUserName()}`, {
       headers: {
         Authorization: `Bearer ${auth.token()}`,
       },

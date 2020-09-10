@@ -25,12 +25,12 @@ export const fetchLocationFailure = (error) => {
   };
 };
 
-const fetchLocation = (data) => {
+const fetchLocation = () => {
   const auth = new Auth();
-  console.log(data);
+  
   return (dispatch) => {
     dispatch(fetchLocationRequest);
-    Axios.get(`${process.env.REACT_APP_API_URI}api/locations/detail/${data}`, {
+    Axios.get(`${process.env.REACT_APP_API_URI}api/locations/detail/${auth.getUserId()}`, {
       headers: {
         Authorization: `Bearer ${auth.token()}`,
       },

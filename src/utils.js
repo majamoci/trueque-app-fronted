@@ -26,6 +26,7 @@ export default class Auth {
     this.session = sessionStorage;
     this.isLocal = "AUTH" in this.local;
     this.isSession = "AUTH" in this.session;
+    this.isUserData = 'user_data' in this.session;
   }
 
   authenticated() {
@@ -66,25 +67,30 @@ export default class Auth {
     })
       .then((res) => res.data)
       .then((data) =>
-        sessionStorage.setItem("user_data", JSON.stringify(data))
+        this.session.setItem("user_data", JSON.stringify(data))
       );
   }
+
   verifyUserSession() {
-    if (!sessionStorage.getItem('user_data')){
+    if (!this.isUserData) {
       this.getUser();
       this.getUserId();
       this.getUserName();
     }
   }
-  getUserId() {
-   let data = sessionStorage.getItem('user_data');
-    data = JSON.parse(data);
-  return(data.id)
+
+  getUserData() {
+    return JSON.parse(this.session.getItem('user_data'));
   }
+
+  getUserId() {
+    let { id } = this.getUserData();
+    return id;
+  }
+
   getUserName() {
-    let data = sessionStorage.getItem('user_data');
-    data = JSON.parse(data);
-  return(data.name) 
+    let { name } = this.getUserData();
+    return name;
   }
 
 }

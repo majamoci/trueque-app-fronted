@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useRouteMatch } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import { CardActionArea } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -11,8 +10,6 @@ import { getOffer } from "../service";
 import AcceptDialog from "./AcceptDialog";
 
 export default function ProductCard({ item, type, from }) {
-  const history = useHistory();
-  const { path } = useRouteMatch();
   const [value, setValue] = useState({});
   const [open, setOpen] = useState(false);
 
@@ -36,6 +33,7 @@ export default function ProductCard({ item, type, from }) {
   const xor =
     (from === "pub" || type === "pub") &&
     (from === "offer" || type === "offer");
+  const only_pubs = from === "pub" || type === "offer";
 
   const handleView = (value) => {
     if (!isEmpty(value) && xor) {
@@ -80,6 +78,7 @@ export default function ProductCard({ item, type, from }) {
       <AcceptDialog
         trueque_id={item.id}
         pub_id={item.pub_id}
+        from={only_pubs}
         open={open}
         onClose={handleClose}
       />
