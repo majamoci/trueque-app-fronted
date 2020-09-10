@@ -31,7 +31,7 @@ const fetchPubs = (data) => {
 
   return (dispatch) => {
     dispatch(fetchPubsRequest);
-    Axios.get(`${process.env.REACT_APP_API_URI}api/publication/${data}`, {
+    Axios.get(`${process.env.REACT_APP_API_URI}api/publications/${data}`, {
       headers: {
         Authorization: `Bearer ${auth.token()}`,
       },

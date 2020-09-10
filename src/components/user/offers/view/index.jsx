@@ -1,56 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import ProductCard from "./Card";
-import SyncAltIcon from '@material-ui/icons/SyncAlt';
-// import { getProducts } from "../service";
+import SyncAltIcon from "@material-ui/icons/SyncAlt";
+import { useStyles } from "../styles";
+import { getTransactions } from "../service";
+import { Typography } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  arrow: {
-    margin: '50px',
-    // display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-}));
+function ShowTransactions({ items, from }) {
+  const classes = useStyles();
 
-function ShowProducts({ products }) {
-  return products.map((item) => (
-    <Grid item xs={12} sm={3} key={item.id}>
-      {/* <ProductCard item={item} /> */}
+  return items.map((item) => (
+    <Grid item xs={12} md={6} key={item.id} className={classes.flex}>
+      <ProductCard item={item} type="offer" from={from} />
+      <SyncAltIcon
+        className={clsx(classes.arrow, classes.center)}
+        fontSize="large"
+      />
+      <ProductCard item={item} type="pub" from={from} />
     </Grid>
   ));
 }
 
 export default function ViewOffers() {
-  const [items, setItems] = useState(null);
+  const [itemsO, setItemsO] = useState([]);
+  const [itemsP, setItemsP] = useState([]);
   const classes = useStyles();
-  const setProducts = async () => {
-    // const items = await getProducts();
-
-    // setItems(items.products);
-  };
 
   useEffect(() => {
-    setProducts();
+    getTransactions("offers").then((data) => setItemsO(data.by_offers));
+    getTransactions("pubs").then((data) => setItemsP(data.by_pubs));
   }, []);
-
-  // if (items === null) return <p>Cargando ofertas...</p>;
-  // if (items === null) return <p>Cargando intercambios...</p>;
 
   return (
     <div className={classes.root}>
+      <Typography variant="h3" component="h1">
+        Tus ofertas
+      </Typography>
       <Grid container spacing={2}>
-        {/* <ShowProducts products={items} /> */}
-        <ProductCard/>
-          <Grid>
-            <SyncAltIcon className={classes.arrow} fontSize ='large'/>
-          </Grid>
-        <ProductCard/>
-        
+        {itemsO.length === 0 && <p>Cargando ofertas...</p>}
+        {itemsO.length !== 0 && (
+          <ShowTransactions items={itemsO} from="offer" />
+        )}
+      </Grid>
+      <Typography variant="h3" component="h1">
+        Ofertas a tus productos
+      </Typography>
+      <Grid container spacing={2}>
+        {itemsP.length === 0 && <p>Cargando publicaciones...</p>}
+        {itemsP.length !== 0 && <ShowTransactions items={itemsP} from="pub" />}
       </Grid>
     </div>
   );

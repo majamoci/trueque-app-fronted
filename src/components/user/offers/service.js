@@ -14,6 +14,17 @@ export const getOffer = async (id) => {
   return res.data;
 }
 
+export const getTransactions = async (type) => {
+  const res = await Axios.get(
+    `${process.env.REACT_APP_API_URI}api/transactions/${type}`, {
+    headers: {
+      Authorization: `Bearer ${auth.token()}`,
+    },
+  });
+
+  return res.data;
+}
+
 export const createOffer = async (data) => {
   const formData = new FormData();
   const { photos, ...rest } = data;

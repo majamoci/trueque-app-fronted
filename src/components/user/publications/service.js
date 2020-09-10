@@ -4,7 +4,7 @@ import Auth from "utils";
 const auth = new Auth();
 
 export const getPublication = async (id) => {
-  const res = await Axios.get(`${process.env.REACT_APP_API_URI}api/publication/detail/${id}`, {
+  const res = await Axios.get(`${process.env.REACT_APP_API_URI}api/publication/${id}`, {
     headers: {
       Authorization: `Bearer ${auth.token()}`,
     },
