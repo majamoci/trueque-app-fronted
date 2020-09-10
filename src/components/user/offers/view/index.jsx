@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import ProductCard from "./Card";
+import FromOffer from "./../from-offer/index";
 import SyncAltIcon from '@material-ui/icons/SyncAlt';
 // import { getProducts } from "../service";
 
@@ -45,11 +46,13 @@ export default function ViewOffers() {
     <div className={classes.root}>
       <Grid container spacing={2}>
         {/* <ShowProducts products={items} /> */}
-        <ProductCard/>
+        {/* <ProductCard/>
           <Grid>
             <SyncAltIcon className={classes.arrow} fontSize ='large'/>
           </Grid>
-        <ProductCard/>
+        <ProductCard/> */}
+
+        <FromOffer/>
         
       </Grid>
     </div>

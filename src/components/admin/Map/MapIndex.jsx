@@ -7,6 +7,9 @@ import Busqueda from "./components/Busqueda";
 import Alert from '@material-ui/lab/Alert';
 import fetchLocations from "redux/actions/locations/location.action";
 import { isEmpty } from "utils";
+import Auth from "utils";
+
+const auth = new Auth();
 
 function MapIndex() {
     //Estado del componente
@@ -25,7 +28,7 @@ function MapIndex() {
 
     useEffect(() => {
         //TODO Guardar datos del usuario en memoria
-        dispatch(fetchLocations("2"));
+        dispatch(fetchLocations("4"));
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
     
@@ -71,10 +74,10 @@ function MapIndex() {
     return (
         !isEmpty(locationSt) && (
             <div>
-            <h2>Escoja su dirección en el mapa</h2>
-            <Alert severity="info">
-                 Esta ubicación será la que se utilizará para todas las publicaciones
-            </Alert>
+                <h2>Escoja su dirección en el mapa</h2>
+                <Alert severity="info">
+                    Esta ubicación será la que se utilizará para todas las publicaciones
+                </Alert>
             <div>
               Latitud: {locationSt.locations.lat}
               Longitud: {locationSt.locations.lng}

@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 const toType = (obj) => {
   return {}.toString
     .call(obj)
@@ -39,13 +41,13 @@ export default class Auth {
   }
 
   login(type, data) {
-    if (type) this.local.setItem('AUTH', data);
-    if (!type) this.session.setItem('AUTH', data);
+    if (type) this.local.setItem("AUTH", data);
+    if (!type) this.session.setItem("AUTH", data);
   }
 
   logout() {
-    if (this.isLocal) this.local.removeItem('AUTH');
-    if (this.isSession) this.session.removeItem('AUTH');
+    if (this.isLocal) this.local.removeItem("AUTH");
+    if (this.isSession) this.session.removeItem("AUTH");
   }
 
   token() {
@@ -55,4 +57,34 @@ export default class Auth {
     if (this.isSession) token = this.session.getItem("AUTH");
     return token.slice(0, token.length - 2);
   }
+
+  getUser() {
+    Axios.get(`${process.env.REACT_APP_API_URI}api/user/`, {
+      headers: {
+        Authorization: `Bearer ${this.token()}`,
+      },
+    })
+      .then((res) => res.data)
+      .then((data) =>
+        sessionStorage.setItem("user_data", JSON.stringify(data))
+      );
+  }
+  verifyUserSession() {
+    if (!sessionStorage.getItem('user_data')){
+      this.getUser();
+      this.getUserId();
+      this.getUserName();
+    }
+  }
+  getUserId() {
+   let data = sessionStorage.getItem('user_data');
+    data = JSON.parse(data);
+  return(data.id)
+  }
+  getUserName() {
+    let data = sessionStorage.getItem('user_data');
+    data = JSON.parse(data);
+  return(data.name) 
+  }
+
 }
