@@ -25,6 +25,15 @@ import _verify_otp from "../ducks/_verify_otp.duck";
 //locations
 import location from "./locations/location.reducer";
 import new_location from "./locations/create.reducer";
+//sipa
+import register_sp from './sipa/register-market-type.reducer';
+import register_unit_measure from './sipa/register-unit-measures.reducer';
+import fetchRegisterCategory from './sipa/register-category.reducer';
+import register_sector from './sipa/register-market-sector.reducer';
+import register_system_product from './sipa/register-system-product.reducer';
+import register_market from './sipa/register-market.reducer';
+import register_price from './sipa/register-price.reducer';
+
 
 const auth = combineReducers({
   register,
@@ -40,7 +49,6 @@ const user = combineReducers({
   users,
   profile,
   mini_profile,
-  
 });
 
 const loc = combineReducers({
@@ -63,12 +71,25 @@ const backdrops = combineReducers({
   _new_pub,
 });
 
+const sipa = combineReducers({
+  register_sp,
+  register_unit_measure,
+  fetchRegisterCategory,
+  register_sector,
+  register_system_product,
+  register_market,
+  register_price,
+});
+
 const rootReducer = combineReducers({
   auth,
   user,
   publication,
   backdrops,
-  loc
+  loc,
+  sipa,
 });
+
+
 
 export default rootReducer;

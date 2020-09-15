@@ -3,6 +3,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import DrawerTemplate from "../dashboard/Drawer";
+import BarChartIcon from '@material-ui/icons/BarChart';
 
 const menu = [
   {
@@ -24,6 +25,11 @@ const menu = [
     icon: <AccountBoxIcon />,
     text: "Mapas",
     link: "/map",
+  },
+  {
+    icon: <BarChartIcon />,
+    text: "Datos",
+    link: "/navTabs",
   },
 ];
 

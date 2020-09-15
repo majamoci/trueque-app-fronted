@@ -86,7 +86,7 @@ function MapIndex() {
         </Grid>
         {/* <Grid container>
                 <Grid item xs={6}>
-                    <Busqueda 
+                    <Busqueda
                         addMarker={addMarker}
                         clearMarkers={clearMarkers}
                         setCenter={setCenter}

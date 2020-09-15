@@ -6,7 +6,9 @@ import AdminMenu from "./Actions";
 import Account from "../dashboard/account";
 import Users from "./Users";
 import Map from "./Map/MapIndex";
+import NavTabs from "./product-price/NavTabs";
 
+//importo el componente de los tabs
 export default function AdminRouter() {
   const { path } = useRouteMatch();
   return (
@@ -24,6 +26,12 @@ export default function AdminRouter() {
         <Route exact path={`${path}/map`}>
           <Map />
         </Route>
+
+        <Route exact path={`${path}/navTabs`}>
+          <NavTabs />
+        </Route>
+  {/* aqui tambien necesito */}
+
         <Route path="*">
           <Redirect to={path} />
         </Route>

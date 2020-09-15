@@ -6,19 +6,19 @@ import { useStyles } from "../styles";
 
 export default function Slides({ category }) {
   const classes = useStyles();
-  const [data, setData] = useState([]);
+  const [pubs, setPubs] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_URI}api/publications/category/${category}`;
 
     Axios.get(url)
-      .then((response) => response.data)
+      .then((res) => res.data)
       .then((data) => {
-        setData(data.pubs)
+        setPubs(data.pubs);
         setLoading(false);
-        console.log(data);
-      });
+      })
+      .catch((e) => console.error(e));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,9 +27,9 @@ export default function Slides({ category }) {
   return (
     <div className={classes.slider}>
       <Grid container spacing={2}>
-        {data &&
-          data.map((item) => (
-            <Grid item key={item.pub_id} xs={12} sm={3}>
+        {pubs &&
+          pubs.map((item) => (
+            <Grid item key={item.id} xs={12} sm={3}>
               <PubCard item={item}></PubCard>
             </Grid>
           ))}
