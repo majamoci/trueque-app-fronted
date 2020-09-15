@@ -28,6 +28,8 @@ import register_unit_measure from './sipa/register-unit-measures.reducer';
 import fetchRegisterCategory from './sipa/register-category.reducer';
 import register_sector from './sipa/register-market-sector.reducer';
 import register_system_product from './sipa/register-system-product.reducer';
+import register_market from './sipa/register-market.reducer';
+import register_price from './sipa/register-price.reducer';
 
 
 const auth = combineReducers({
@@ -67,6 +69,8 @@ const sipa = combineReducers({
   fetchRegisterCategory,
   register_sector,
   register_system_product,
+  register_market,
+  register_price,
 });
 
 const rootReducer = combineReducers({

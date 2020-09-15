@@ -1,4 +1,8 @@
-import React from 'react';
+//General
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import { useSelector} from "react-redux";
+//
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,43 +12,45 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-
+//Local
+import { withForm } from "components/shared/hoc/withForm";
+import { isEmpty } from "utils";
 
 const types = [
   {
     value: 'Mayoristas',
-    label: '$',
+    label: '1',
   },
   {
     value: 'Intermedios',
-    label: '€',
+    label: '2',
   },
   {
     value: 'Provinciales',
-    label: '฿',
+    label: '3',
   },
   {
     value: 'Otros',
-    label: '¥',
+    label: '4',
   },
 ];
 
 const sectors = [
   {
     value: 'El Arenal',
-    label: '$',
+    label: '1',
   },
   {
     value: 'El madrugador',
-    label: '€',
+    label: '2',
   },
   {
     value: '4 de Mayo',
-    label: '฿',
+    label: '3',
   },
   {
     value: '14 de Julio',
-    label: '¥',
+    label: '5',
   },
 ];
 
@@ -66,8 +72,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterMarket() {
+function RegisterMarket({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
+
+  const registerSt = useSelector((store) => store.sipa.register_market);
+
+  const [name_marketError, setNameMarketError] = useState(null);
+  const [markettype_idError, setMarketTypeIdError] = useState(null);
+  const [marketsectors_idError, setMarketSectorsIdError] = useState(null);
+
+  useEffect(() => {
+    const response = registerSt.errors;
+    if (!isEmpty(response)) {
+      // desactivamos el backdrop
+      //dispatch(closeBackdrop(false));
+
+      const errors = response.errors;
+      setNameMarketError(errors && errors.name_market ? errors.name_market : null);
+      setMarketTypeIdError(errors && errors.markettypes_id ? errors.markettypes_id : null);
+      setMarketSectorsIdError(errors && errors.marketsectors_id ? errors.marketsectors_id : null);
+      
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [registerSt]);
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -77,7 +105,7 @@ export default function RegisterMarket() {
         <Typography component="h1" variant="h5">
           Ingresar mercado
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={_handleSubmit}>
           <Grid container spacing={2}>
             
             <Grid item xs={12}>
@@ -87,8 +115,12 @@ export default function RegisterMarket() {
                 fullWidth
                 id="marketname"
                 label="Mercado"
-                name="marketname"
-                autoComplete="marketname"
+                name="name_market"
+                autoComplete="name_market"
+                error={Boolean(name_marketError)}
+                helperText={name_marketError}
+                onChange={_handleChange}
+
               />
             </Grid>
             <Grid item xs={12}>
@@ -99,11 +131,14 @@ export default function RegisterMarket() {
                 select
                 id="type"
                 label="Tipo"
-                name="type"
+                name="markettypes_id"
                 autoComplete="type"
+                error={Boolean(markettype_idError)}
+                helperText={markettype_idError}
+                onChange={_handleChange}
               >
                 {types.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
+                <MenuItem key={option.value} value={option.label}>
                 {option.value}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
@@ -118,11 +153,16 @@ export default function RegisterMarket() {
                 select
                 id="sector"
                 label="Sector"
-                name="sector"
+                name="marketsectors_id"
                 autoComplete="sector"
+
+                error={Boolean(marketsectors_idError)}
+                helperText={marketsectors_idError}
+                onChange={_handleChange}
+
               >
                 {sectors.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
+                <MenuItem key={option.value} value={option.label}>
                 {option.value}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
@@ -146,3 +186,10 @@ export default function RegisterMarket() {
     </Container>
   );
 }
+
+RegisterMarket.propTypes = {
+  _handleChange: PropTypes.func.isRequired,
+  _handleSubmit: PropTypes.func.isRequired,
+};
+
+export default withForm(RegisterMarket);

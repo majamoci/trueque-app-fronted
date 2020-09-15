@@ -7,6 +7,8 @@ import RegisterMarket from './register-market';
 
 //
 import  fetchRegisterSystemProduct from "redux/actions/sipa/register-system-product.action";
+import  fetchRegisterMarket from "redux/actions/sipa/register-market.action";
+
 import {useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,8 +26,12 @@ export default function MarketProductGrid() {
   const classes = useStyles();
 
   let dispatch = useDispatch();
-  const handleSubmit = (formData) => {
+  const handleSubmitRegisterProduct = (formData) => {
     dispatch(fetchRegisterSystemProduct(formData));
+  };
+
+  const handleSubmitRegisterMarket = (formData) => {
+    dispatch(fetchRegisterMarket(formData));
   };
 
 
@@ -33,10 +39,10 @@ export default function MarketProductGrid() {
     return (
       <React.Fragment>
         <Grid item xs={6}>
-          <Paper className={classes.paper}><RegisterProduct onSubmit={handleSubmit}/></Paper>
+          <Paper className={classes.paper}><RegisterProduct onSubmit={handleSubmitRegisterProduct}/></Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}><RegisterMarket /></Paper>
+          <Paper className={classes.paper}><RegisterMarket onSubmit={handleSubmitRegisterMarket}/></Paper>
         </Grid>
         
       </React.Fragment>

@@ -10,6 +10,9 @@ import UnitMeasure from './tabs-forms/unit-measure';
 import UnitCategoryTypeSectorGrid from './tabs-forms/unit-category-type-sector-Grid';
 import MarketProductGrid from './tabs-forms/market-product-Grid';
 import RegisterPrice from './tabs-forms/register-price';
+//
+import  fetchRegisterPrice from "redux/actions/sipa/register-price.action";
+import {useDispatch } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavTabs() {
   const classes = useStyles();
+  let dispatch = useDispatch();
+  const handleSubmitRegisterPrice = (formData) => {
+    dispatch(fetchRegisterPrice(formData));
+  };
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -86,7 +93,7 @@ export default function NavTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <RegisterPrice />
+        <RegisterPrice onSubmit={handleSubmitRegisterPrice}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <MarketProductGrid />
