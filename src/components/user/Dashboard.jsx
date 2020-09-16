@@ -1,5 +1,5 @@
 // general
-import React, { useEffect } from "react";
+import React from "react";
 // material ui
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -11,7 +11,7 @@ export default function UDashboard() {
     <Container maxWidth="lg">
       <Grid container spacing={2}>
         {/* Ver ofertas */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12}>
           <ViewOffers />
         </Grid>
       </Grid>

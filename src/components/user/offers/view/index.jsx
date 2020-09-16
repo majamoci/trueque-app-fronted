@@ -24,12 +24,10 @@ function ShowTransactions({ items, from }) {
 
 export default function ViewOffers() {
   const [itemsO, setItemsO] = useState([]);
-  const [itemsP, setItemsP] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     getTransactions("offers").then((data) => setItemsO(data.by_offers));
-    getTransactions("pubs").then((data) => setItemsP(data.by_pubs));
   }, []);
 
   return (
@@ -42,13 +40,6 @@ export default function ViewOffers() {
         {itemsO.length !== 0 && (
           <ShowTransactions items={itemsO} from="offer" />
         )}
-      </Grid>
-      <Typography variant="h3" component="h1">
-        Ofertas a tus productos
-      </Typography>
-      <Grid container spacing={2}>
-        {itemsP.length === 0 && <p>Cargando publicaciones...</p>}
-        {itemsP.length !== 0 && <ShowTransactions items={itemsP} from="pub" />}
       </Grid>
     </div>
   );

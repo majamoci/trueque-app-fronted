@@ -11,9 +11,6 @@ export const useStyles = makeStyles((theme) => ({
   center: {
     justifyContent: "center",
   },
-  // tabs: {
-  //   borderRight: `1px solid ${theme.palette.divider}`,
-  // },
   arrow: {
     display: "flex",
     margin: "25px",
