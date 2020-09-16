@@ -49,6 +49,7 @@ export default class Auth {
   logout() {
     if (this.isLocal) this.local.removeItem("AUTH");
     if (this.isSession) this.session.removeItem("AUTH");
+    this.session.removeItem("user_data");
   }
 
   token() {
