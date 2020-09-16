@@ -14,7 +14,7 @@ import Offers from "./Offers";
 import NewOffer from "./offers/new";
 import FromOffer from "./offers/from-offer";
 
-export default function AdminRouter() {
+export default function UserRouter() {
   const { path } = useRouteMatch();
   return (
     <TemplateAdmin drawer={UserMenu}>

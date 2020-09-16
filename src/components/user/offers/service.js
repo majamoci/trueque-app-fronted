@@ -1,9 +1,9 @@
 import Axios from "axios";
 import Auth from "utils";
 
-const auth = new Auth();
 
 export const getOffer = async (id) => {
+  const auth = new Auth();
   const res = await Axios.get(
     `${process.env.REACT_APP_API_URI}api/offers/${id}`, {
     headers: {
@@ -15,6 +15,7 @@ export const getOffer = async (id) => {
 }
 
 export const getTransactions = async (type) => {
+  const auth = new Auth();
   const res = await Axios.get(
     `${process.env.REACT_APP_API_URI}api/transactions/${type}`, {
     headers: {
@@ -26,6 +27,7 @@ export const getTransactions = async (type) => {
 }
 
 export const createOffer = async (data) => {
+  const auth = new Auth();
   const formData = new FormData();
   const { photos, ...rest } = data;
   const new_data = { ...rest, ...photos };
@@ -47,6 +49,7 @@ export const createOffer = async (data) => {
 };
 
 export const deleteOffers = async (id) => {
+  const auth = new Auth();
   const res = await Axios.delete(
     `${process.env.REACT_APP_API_URI}api/offers/${id}`, {
     headers: {
@@ -58,6 +61,7 @@ export const deleteOffers = async (id) => {
 };
 
 export const changeStatus = async (data) => {
+  const auth = new Auth();
   const res = await Axios.post(
     `${process.env.REACT_APP_API_URI}api/transaction`, data, {
     headers: {

@@ -1,8 +1,8 @@
 // general
-import React from "react";
+import React, { useEffect } from "react";
 // material ui
-import  Container  from "@material-ui/core/Container";
-import  Grid  from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 // local
 import ViewOffers from "./dashboard/ViewOffers";
 

@@ -74,12 +74,14 @@ export default class Auth {
   verifyUserSession() {
     if (!this.isUserData) {
       this.getUser();
-      this.getUserId();
-      this.getUserName();
+      return true;
     }
+
+    return false;
   }
 
   getUserData() {
+    if (!this.isUserData) return { id: null };
     return JSON.parse(this.session.getItem('user_data'));
   }
 

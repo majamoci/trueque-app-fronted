@@ -27,17 +27,14 @@ function LoginRequiredRoute({ ...rest }) {
         const auth = new Auth();
         dispatch(closeBLogin(false));
         dispatch(closeBRegister(false));
+
         switch (auth.role()) {
           case "U": {
             auth.verifyUserSession();
-            auth.getUserId();
-            auth.getUserName();
             return <UserRouter />;
           }
           case "A": {
             auth.verifyUserSession();
-            auth.getUserId();
-            auth.getUserName();
             return <AdminRouter />;
           }
           default: {

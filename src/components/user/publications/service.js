@@ -1,9 +1,8 @@
 import Axios from "axios";
 import Auth from "utils";
 
-const auth = new Auth();
-
 export const getPublication = async (id) => {
+  const auth = new Auth();
   const res = await Axios.get(`${process.env.REACT_APP_API_URI}api/publication/${id}`, {
     headers: {
       Authorization: `Bearer ${auth.token()}`,
@@ -14,6 +13,7 @@ export const getPublication = async (id) => {
 };
 
 export const createPublication = async (data) => {
+  const auth = new Auth();
   const formData = new FormData();
   const { photos, ...rest } = data;
   const new_data = { ...rest, ...photos };
@@ -34,6 +34,7 @@ export const createPublication = async (data) => {
 };
 
 export const updatePublication = async (data, id) => {
+  const auth = new Auth();
   let new_data = { 'user_id': auth.getUserId(), ...data }
 
   const res = await Axios.post(`${process.env.REACT_APP_API_URI}api/publication/update/${id}`, new_data, {
@@ -46,6 +47,7 @@ export const updatePublication = async (data, id) => {
 };
 
 export const deletePublication = async (id) => {
+  const auth = new Auth();
   const res = await Axios.delete(`${process.env.REACT_APP_API_URI}api/publication/delete/${id}`, {
     headers: {
       Authorization: `Bearer ${auth.token()}`,
