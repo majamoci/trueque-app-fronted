@@ -1,7 +1,7 @@
 //General
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { useSelector} from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 //
 
 import Avatar from '@material-ui/core/Avatar';
@@ -17,6 +17,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 //Local
 import { withForm } from "components/shared/hoc/withForm";
 import { isEmpty } from "utils";
+import fetchGetProduct from "redux/actions/sipa/get-product.action";
+import fetchGetMarket from "redux/actions/sipa/get-markets.action";
+import fetchGetUnitMeasure from "redux/actions/sipa/get-unit-measures-action";
 
 const products = [
   {
@@ -122,7 +125,32 @@ function RegisterPrice({ _handleChange, _handleSubmit }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registerSt]);
 
+
+  //para obtener todos los productos
+  const dispatch1 = useDispatch();
+  const dispatch2 = useDispatch();
+  const dispatch3 = useDispatch();
+  const [loading, setLoading] = useState(true);
+  //const [user, setUser] = useState();
+  const usersSt1 = useSelector((store) => store.sipa.get_product.data);
+  const usersSt2 = useSelector((store) => store.sipa.get_market.data);
+  const usersSt3 = useSelector((store) => store.sipa.get_unit_measures.data);
+  
+  
+  useEffect(() => {
+    dispatch1(fetchGetProduct());
+    dispatch2(fetchGetMarket());
+    dispatch3(fetchGetUnitMeasure());
+    setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+
+
+
   return (
+    !isEmpty(usersSt1&&usersSt2&&usersSt3) && (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -148,9 +176,9 @@ function RegisterPrice({ _handleChange, _handleSubmit }) {
                 onChange={_handleChange}
 
               >
-                {products.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt1.pubs.map((option) => (
+                <MenuItem key={option.name_sys_prod} value={option.id}>
+                {option.name_sys_prod}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
               </TextField>
@@ -171,9 +199,9 @@ function RegisterPrice({ _handleChange, _handleSubmit }) {
                 onChange={_handleChange}
                 
               >
-                {markets.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt2.pubs.map((option) => (
+                <MenuItem key={option.name_market} value={option.id}>
+                {option.name_market}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
               </TextField>
@@ -194,9 +222,9 @@ function RegisterPrice({ _handleChange, _handleSubmit }) {
                 helperText={unit_measures_idError}
                 onChange={_handleChange}
               >
-                {units.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt3.pubs.map((option) => (
+                <MenuItem key={option.name_measure} value={option.id}>
+                {option.name_measure}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
               </TextField>
@@ -253,6 +281,7 @@ function RegisterPrice({ _handleChange, _handleSubmit }) {
       </div>
       
     </Container>
+    )
   );
 }
 

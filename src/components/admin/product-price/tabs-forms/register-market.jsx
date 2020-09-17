@@ -1,7 +1,7 @@
 //General
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { useSelector} from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 //
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 //Local
 import { withForm } from "components/shared/hoc/withForm";
 import { isEmpty } from "utils";
+
+import fetchGetMarketTyp from "redux/actions/sipa/get-markettype.action";
+import fetchGetMarketSector from "redux/actions/sipa/get-market-sector.action";
 
 const types = [
   {
@@ -97,7 +100,29 @@ function RegisterMarket({ _handleChange, _handleSubmit }) {
   }, [registerSt]);
 
 
+
+  //para obtener todos los Sectores y tipos
+  const dispatch1 = useDispatch();
+  const dispatch2 = useDispatch();
+  
+  const [loading, setLoading] = useState(true);
+  //const [user, setUser] = useState();
+  const usersSt1 = useSelector((store) => store.sipa.get_market_tp.data);
+  const usersSt2 = useSelector((store) => store.sipa.get_market_sec.data);
+  
+  useEffect(() => {
+    dispatch1(fetchGetMarketTyp());
+    dispatch2(fetchGetMarketSector());
+    setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  
+
+  //console.log(usersSt1.pubs)
+
   return (
+    !isEmpty(usersSt1&&usersSt2) && (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -123,6 +148,7 @@ function RegisterMarket({ _handleChange, _handleSubmit }) {
 
               />
             </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -137,9 +163,9 @@ function RegisterMarket({ _handleChange, _handleSubmit }) {
                 helperText={markettype_idError}
                 onChange={_handleChange}
               >
-                {types.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt1.markettypes.map((option) => (
+                <MenuItem key={option.name_tp} value={option.id}>
+                {option.name_tp}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
               </TextField>
@@ -161,9 +187,9 @@ function RegisterMarket({ _handleChange, _handleSubmit }) {
                 onChange={_handleChange}
 
               >
-                {sectors.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt2.pubs.map((option) => (
+                <MenuItem key={option.name_str} value={option.id}>
+                {option.name_str}  {/*{option.label}  esto esta modificado*/}
                 </MenuItem>
                 ))}
               </TextField>
@@ -184,6 +210,7 @@ function RegisterMarket({ _handleChange, _handleSubmit }) {
       </div>
       
     </Container>
+    )
   );
 }
 

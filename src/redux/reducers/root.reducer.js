@@ -33,6 +33,12 @@ import register_sector from './sipa/register-market-sector.reducer';
 import register_system_product from './sipa/register-system-product.reducer';
 import register_market from './sipa/register-market.reducer';
 import register_price from './sipa/register-price.reducer';
+import get_category from './sipa/get-category.reducer';
+import get_product from './sipa/get-product.reducer';
+import get_market from './sipa/get-markets.reducer';
+import get_unit_measures from './sipa/get-unit-measures-reducer';
+import get_market_tp from './sipa/get-markettype.reducer';
+import get_market_sec from './sipa/get-market-sector.reducer';
 
 
 const auth = combineReducers({
@@ -79,6 +85,12 @@ const sipa = combineReducers({
   register_system_product,
   register_market,
   register_price,
+  get_category,
+  get_product,
+  get_market,
+  get_unit_measures,
+  get_market_tp,
+  get_market_sec,
 });
 
 const rootReducer = combineReducers({

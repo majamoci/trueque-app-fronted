@@ -15,7 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 //Local
 import { withForm } from "components/shared/hoc/withForm";
 import { isEmpty } from "utils";
-
+import fetchGetCategory from "redux/actions/sipa/get-category.action";
 
 const categories = [
   {
@@ -55,9 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 function RegisterProduct({ _handleChange, _handleSubmit }) {
   const classes = useStyles();
-  const dispatch = useDispatch();
-
-
+  
   const registerSt = useSelector((store) => store.sipa.register_system_product);
   const [name_sys_prodError, setDescriptionError] = useState(null);
   const [categories_idError, setNameGtgryError] = useState(null);
@@ -76,8 +74,24 @@ function RegisterProduct({ _handleChange, _handleSubmit }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registerSt]);
 
+  //para obtener todas las cetegorias 
+  const dispatch1 = useDispatch();
+  const [loading, setLoading] = useState(true);
+  //const [user, setUser] = useState();
+  const usersSt1 = useSelector((store) => store.sipa.get_category.data);
+  
+  
+  useEffect(() => {
+    dispatch1(fetchGetCategory());
+    setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+ console.log(usersSt1.pubs)
 
   return (
+    !isEmpty(usersSt1) && (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -117,9 +131,9 @@ function RegisterProduct({ _handleChange, _handleSubmit }) {
                 helperText={categories_idError}
                 onChange={_handleChange}
               >
-                {categories.map((option) => (
-                <MenuItem key={option.value} value={option.label}>
-                {option.value}  {/*{option.label}  esto esta modificado*/}
+                {usersSt1.pubs.map((option) => (
+                <MenuItem key={option.name_gtgry} value={option.id}>
+                {option.name_gtgry}  {/*{option.label}  esto esta modificado*/}
                 
                 </MenuItem>
                 ))}
@@ -141,6 +155,7 @@ function RegisterProduct({ _handleChange, _handleSubmit }) {
       </div>
       
     </Container>
+    )
   );
 }
 
