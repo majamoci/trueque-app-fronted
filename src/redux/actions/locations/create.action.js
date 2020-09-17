@@ -27,10 +27,9 @@ export const fetchCreateLocationFailure = (error) => {
 
 const fetchCreateLocation = (data) => {
   const auth = new Auth();
-  console.log(data);
   return (dispatch) => {
     dispatch(fetchCreateLocationRequest);
-    Axios.post(`${process.env.REACT_APP_API_URI}api/locations`, {
+    Axios.post(`${process.env.REACT_APP_API_URI}api/locations/update/${auth.getUserId()}`, data, {
       headers: {
         Authorization: `Bearer ${auth.token()}`,
       },

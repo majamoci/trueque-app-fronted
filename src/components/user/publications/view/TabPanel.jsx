@@ -28,7 +28,7 @@ export default function TabPanel({ index, ...other }) {
   const publications =
     !isEmpty(pubSt.data) &&
     pubSt.data.pubs.map((pub) => (
-      <Grid key={pub.id} item xs={12} md={3}>
+      <Grid key={pub.id} item xs={12} sm={4} md={6} lg={3}>
         <CardPub pub={pub} />
       </Grid>
     ));

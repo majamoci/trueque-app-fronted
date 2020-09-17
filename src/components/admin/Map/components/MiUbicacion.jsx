@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
-import NewLocation from "./button/NewLocation";
-import fetchCreateLocation from "redux/actions/locations/create.action";
-
-const initial_form = {
-  lat: 0,
-  lng: 0,
-};
 
 const MiUbicación = ({ setCenter, setMarker }) => {
-  const dispatch = useDispatch();
-  const handleSubmit = (formData) => {
-    dispatch(fetchCreateLocation(formData));
-  };
 
   const findMe = () => {
     if (!navigator.geolocation) {
@@ -37,7 +26,6 @@ const MiUbicación = ({ setCenter, setMarker }) => {
             `lat: ${latitude}, lng: ${longitude}`
           );
         }
-        console.log(position);
       },
       (error) => {
         alert("Error al obtener la ubicación");
@@ -56,9 +44,6 @@ const MiUbicación = ({ setCenter, setMarker }) => {
         >
           Localizarme
         </Button>
-      </Grid>
-      <Grid item xs={6}>
-        <NewLocation onSubmit={handleSubmit} values={initial_form} />
       </Grid>
     </Grid>
   );

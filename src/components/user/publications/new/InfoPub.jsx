@@ -70,7 +70,6 @@ export default function InfoPub() {
 
   return (
     <div className={classes.root}>
-      <h3>Algunas recomendaciones antes de publicar</h3>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>

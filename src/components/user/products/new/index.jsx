@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NewProductForm from "./NewProductForm";
 import { createProduct } from "../service";
 
@@ -9,9 +9,21 @@ const initial_form = {
 };
 
 export default function NewProduct() {
+  const [isLoading, setLoading] = useState(false);
   const handleSubmit = (formData) => {
-    createProduct(formData);
+    setLoading(true);
+
+    createProduct(formData).then((data) => {
+      console.log(data);
+      setLoading(false);
+    });
   };
 
-  return <NewProductForm onSubmit={handleSubmit} values={initial_form} />;
+  return (
+    <NewProductForm
+      onSubmit={handleSubmit}
+      open={isLoading}
+      values={initial_form}
+    />
+  );
 }

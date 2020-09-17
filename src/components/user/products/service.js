@@ -23,6 +23,17 @@ export const getProducts = async () => {
   return res.data;
 };
 
+export const getSystemProducts = async () => {
+  const auth = new Auth();
+  const res = await Axios.get(`${process.env.REACT_APP_API_URI}api/system-available-products`, {
+    headers: {
+      Authorization: `Bearer ${auth.token()}`,
+    },
+  });
+
+  return res.data;
+};
+
 export const createProduct = async (data) => {
   const auth = new Auth();
   const res = await Axios.post(`${process.env.REACT_APP_API_URI}api/products`, data, {

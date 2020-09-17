@@ -20,11 +20,11 @@ function NewOfferForm({
   _handleChange,
   _handleSubmit,
   _handleProductId,
+  open,
   values,
 }) {
   const classes = useStyles();
   const newSt = useSelector((store) => store.publication.new);
-  const backdropSt = useSelector((state) => state.backdrops._new_pub);
 
   const handleChange = (files) => {
     _handleChange({
@@ -37,7 +37,7 @@ function NewOfferForm({
 
   return (
     <>
-      <Backdrop className={classes.backdrop} open={backdropSt.open}>
+      <Backdrop className={classes.backdrop} open={open}>
         <CircularProgress color="inherit" />
       </Backdrop>
       <Typography variant="h3" component="h1">
@@ -116,6 +116,7 @@ NewOfferForm.propTypes = {
   _handleChange: PropTypes.func.isRequired,
   _handleSubmit: PropTypes.func.isRequired,
   _handleProductId: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
 };
 

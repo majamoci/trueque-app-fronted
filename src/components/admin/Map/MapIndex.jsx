@@ -7,9 +7,14 @@ import Busqueda from "./components/Busqueda";
 import Alert from "@material-ui/lab/Alert";
 import fetchLocations from "redux/actions/locations/location.action";
 import { isEmpty } from "utils";
-import Auth from "utils";
+import { FormGroup } from "@material-ui/core";
+import NewLocation from "./components/button/NewLocation";
+import fetchCreateLocation from "redux/actions/locations/create.action";
 
-const auth = new Auth();
+const initial_form = {
+  lat: 0,
+  lng: 0,
+};
 
 function MapIndex() {
   //Estado del componente
@@ -17,14 +22,7 @@ function MapIndex() {
   const locationSt = useSelector((store) => store.loc.location.data);
   const [lat, setLat] = useState("-1.3921655");
   const [lng, setLng] = useState("-78.5390282");
-  // const [lat, setLat] = useState('-1.3921655');
-  // const [lng, setLng] = useState({locationSt.locations.lng});
   const [markers, setMarkers] = useState([]);
-
-  console.log({ locationSt });
-  useEffect(() => {
-    console.log(`latitud ${locationSt}`);
-  }, []);
 
   useEffect(() => {
     //TODO Guardar datos del usuario en memoria
@@ -42,6 +40,7 @@ function MapIndex() {
       15
     );
   };
+
   const addMarker = (lat, lng, title, subtitle) => {
     const marker = window.L.mapquest
       .textMarker(new window.L.LatLng(lat, lng), {
@@ -57,16 +56,25 @@ function MapIndex() {
       })
       .addTo(window.L.mapquest.Map.getMap("map"));
 
+    // cambiamos los valores de lat lng
+    setLat(lat);
+    setLng(lng);
+
     const copyMarkers = markers.slice(0);
     copyMarkers.splice(0, 0, marker); //push(marker);
     setMarkers(copyMarkers);
   };
+
   const clearMarkers = () => {
     markers.forEach((marker) => {
       window.L.mapquest.Map.getMap("map").removeLayer(marker);
     });
     //limpiamos state
     setMarkers([]);
+  };
+
+  const handleSubmit = (formData) => {
+    dispatch(fetchCreateLocation({ lat, lng }));
   };
 
   return (
@@ -77,22 +85,18 @@ function MapIndex() {
           Esta ubicación será la que se utilizará para todas las publicaciones
         </Alert>
         <div>
-          Latitud: {locationSt.locations.lat}
-          Longitud: {locationSt.locations.lng}
+          Latitud: {lat}
+          Longitud: {lng}
         </div>
         <br />
         <Grid item xs={12}>
-          <MiUbicacion setCenter={setCenter} setMarker={addMarker} />
+          <MiUbicacion
+            setCenter={setCenter}
+            setMarker={addMarker}
+            latlng={[lat, lng]}
+          />
+          <NewLocation onSubmit={handleSubmit} values={initial_form} />
         </Grid>
-        {/* <Grid container>
-                <Grid item xs={6}>
-                    <Busqueda
-                        addMarker={addMarker}
-                        clearMarkers={clearMarkers}
-                        setCenter={setCenter}
-                    />
-                </Grid>
-            </Grid> */}
         <br />
         <Grid container>
           <Grid item xs={12}>
@@ -103,6 +107,7 @@ function MapIndex() {
               tileLayer={"map"} //dark,map
               zoom={15}
               apiKey="5XTmyrjnjZH3NCCR4VY5GDHGRh2GstoA"
+              setMarker={addMarker}
             />
           </Grid>
         </Grid>

@@ -11,10 +11,16 @@ const initial_form = {
 
 export default function NewProduct() {
   const { id } = useParams();
+  const [isLoading, setLoading] = useState(false);
   const [values, setValues] = useState(initial_form);
   const handleSubmit = (formData) => {
+    setLoading(true);
+
     updateProduct(formData, id)
-    .then(data => console.log(data));
+    .then(data => {
+      console.log(data)
+      setLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -23,5 +29,7 @@ export default function NewProduct() {
 
   if(values.name === "") return <p>Cargando Formulario...</p>;
 
-  return <EditProductForm onSubmit={handleSubmit} values={values} />;
+  return (
+    <EditProductForm onSubmit={handleSubmit} open={isLoading} values={values} />
+  );
 }

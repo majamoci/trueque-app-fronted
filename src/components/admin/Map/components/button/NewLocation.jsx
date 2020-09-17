@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import { withForm } from "components/shared/hoc/withForm";
 
-function NewLocation({ _handleChange, _handleSubmit, _handleState, values }) {
+function NewLocation({ _handleSubmit, values }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const newLC = useSelector((store) => store.loc.new_location);
@@ -38,13 +38,12 @@ function NewLocation({ _handleChange, _handleSubmit, _handleState, values }) {
   }, [dispatch, history, newLC]);
 
   return (
-    <form noValidate onSubmit={_handleSubmit} encType="multipart/form-data">
+    <form noValidate onSubmit={_handleSubmit}>
       <Button
         variant="contained"
         color="primary"
-        onClick={() => alert("Localización guardada")}
+        type="submit"
         startIcon={<SaveIcon />}
-        onChange={_handleState}
       >
         Guardar
       </Button>
@@ -53,9 +52,7 @@ function NewLocation({ _handleChange, _handleSubmit, _handleState, values }) {
 }
 
 NewLocation.propTypes = {
-  _handleChange: PropTypes.func.isRequired,
   _handleSubmit: PropTypes.func.isRequired,
-  _handleState: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired,
 };
 

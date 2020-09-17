@@ -39,12 +39,22 @@ export const withForm = (View) =>
       // this.setState(this.props.values);
     };
 
+    handleNativeSubmit = (e) => {
+      e.preventDefault();
+      this.props.onSubmit({
+        name: e.target.elements["name"].value,
+        category: e.target.elements["category"].value,
+        price: e.target.elements["price"].value
+      });
+    }
+
     render() {
       return (
         <View
           {...this.props}
           values={this.state}
           _handleSubmit={this.handleSubmit}
+          _handleNativeSubmit={this.handleNativeSubmit}
           _handleChange={this.handleChange}
           _handleRemember={this.handleRemember}
           _handleState={this.handleState}
